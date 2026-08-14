@@ -4,7 +4,7 @@ The one tool that turns Google Maps into a list of businesses you can sell to.
 
 Type in any business type and any location — restaurants in Johannesburg, gyms in Cape Town, dentists in Durban — and the app pulls a clean, exportable list of businesses with their phone number, website, address, rating, and reviews. Every row is a potential customer.
 
-This is a rebranded fork of the popular `omkarcloud/google-maps-scraper` desktop app, run and supported by **Happy Hunter Digital**.
+This is a rebranded fork of the popular `omkarcloud/google-maps-scraper` desktop app, run and supported by **Happy Hunter Digital**. All copy follows the Happy Hunter brand voice and scheme — see [BRAND.md](../../BRAND.md).
 
 ## What you get
 

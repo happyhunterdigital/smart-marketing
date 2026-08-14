@@ -1,6 +1,8 @@
 # Smart Marketing - All-in-One Marketing Tools Platform
 
-A collection of self-hosted marketing tools for automated lead generation, customer engagement, and sales outreach.
+A collection of self-hosted marketing tools for automated lead generation, customer engagement, and sales outreach — built and branded by **Happy Hunter Digital**.
+
+> Brand, colours, typography, and voice: see [BRAND.md](BRAND.md).
 
 ## Tools
 
