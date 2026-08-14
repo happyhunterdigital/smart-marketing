@@ -1,0 +1,24 @@
+{
+  "name": "smart-marketing-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^2.5.0",
+    "firebase": "^10.14.1",
+    "next": "15.4.6",
+    "react": "19.2.4",
+    "react-dom": "^19.2.4",
+    "react-firebase-hooks": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/react": "^19.2.0",
+    "typescript": "^5.8.3"
+  }
+}

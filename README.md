@@ -1,58 +1,93 @@
-# Smart Marketing
+# Smart Marketing - All-in-One Marketing Tools Platform
 
-A curated collection of tools for automated marketing operations, lead generation, and customer engagement. All open-source tools are organized as modular skills accessible across any repository.
+A collection of self-hosted marketing tools for automated lead generation, customer engagement, and sales outreach.
 
-## Available Tools
+## Tools
 
-| Tool | Purpose | Local Clone |
-| --- | --- | --- |
-| **Comp AI CRM** | Agentic-first CRM designed for AI agents | `C:\Users\ratik\Documents\GitHub\crm` |
-| **Google Maps Scraper** | Extract business leads from Google Maps | `C:\Users\ratik\Documents\GitHub\google-maps-scraper` |
-| **OpenReply** | Instagram comment-to-DM automation (ManyChat alternative) | `C:\Users\ratik\Documents\GitHub\openreply` |
-| **OpenWA** | Self-hosted WhatsApp API gateway | `C:\Users\ratik\Documents\GitHub\OpenWA` |
-| **Social Analyzer** | OSINT profile search across social networks | `C:\Users\ratik\Documents\GitHub\social-analyzer` |
-| **OpenMontage** | Agent-first AI video production | `C:\Users\ratik\Documents\GitHub\OpenMontage` |
+- **Comp AI CRM** - Agentic-first CRM designed for AI agents
+- **Google Maps Scraper** - Extract business leads from Google Maps
+- **OpenReply** - Instagram comment-to-DM automation
+- **OpenWA** - Self-hosted WhatsApp API gateway
+- **Social Analyzer** - OSINT username search across social networks
+- **OpenMontage** - Agent-first AI video production
 
-## Repository Structure
+## Project Structure
 
 ```
 smart-marketing/
 ├── README.md
-└── skills/
-    ├── compai-crm/
-    │   └── SKILL.md
-    ├── google-maps-scraper/
-    │   └── SKILL.md
-    ├── openmontage/
-    │   └── SKILL.md
-    ├── openreply/
-    │   └── SKILL.md
-    ├── openwa/
-    │   └── SKILL.md
-    └── social-analyzer/
-        └── SKILL.md
+├── apps/
+│   └── web/                 # Next.js frontend dashboard
+│       ├── pages/
+│       ├── components/
+│       ├── styles/
+│       ├── package.json
+│       └── .env.local
+├── skills/                  # Tool documentation and guides
+│   ├── compai-crm/
+│   ├── google-maps-scraper/
+│   ├── openmontage/
+│   ├── openreply/
+│   ├── openwa/
+│   └── social-analyzer/
+└── package.json (workspace)
 ```
 
-## Usage
+## Quick Start
 
-Each tool in `skills/` contains a `SKILL.md` that documents its capabilities, local clone path, and usage patterns. To use a specific tool's skill set, invoke it by name when working in any repository.
+### Prerequisites
 
-## Individual Tool Descriptions
+- Node.js 20+ or Bun
+- Firebase project with Authentication, Firestore, and Storage enabled
+- Stripe account for payment processing
 
-### Comp AI CRM
-`compai-crm` — Use for CRM records, contact/company/deal management, Agent tabs, mailbox sync, evidence-ledger facts, agent tools/schedules. Local clone at `C:\Users\ratik\Documents\GitHub\crm`.
+### Setup
 
-### Google Maps Scraper
-`google-maps-scraper` — Extract business leads from Google Maps with 50+ data points per listing. Supports desktop app, API integration, and server deployment. Forked from `omkarcloud/google-maps-scraper`.
+1. Clone this repo:
+```bash
+git clone https://github.com/happyhunterdigital/smart-marketing
+cd smart-marketing
+```
 
-### OpenReply
-`openreply` — Instagram comment-to-DM automation via Meta's official API. Features tracked links, follow-gates, keyword-triggered replies. No password required. Local clone at `C:\Users\ratik\Documents\GitHub\openreply`.
+2. Set up Firebase:
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project named `smart-marketing`
+   - Enable Email/Password authentication
+   - Enable Firestore and Storage
+   - Add a web app to the project
 
-### OpenWA
-`openwa` — Self-hosted WhatsApp API gateway (REST API + web dashboard). **Warning: uses unofficial protocol, carries ban risk.** Use dedicated throwaway number only. Local clone at `C:\Users\ratik\Documents\GitHub\OpenWA`.
+3. Configure the web app environment:
+```bash
+cd apps/web
+cp .env.local.example .env.local
+# Edit .env.local with your Firebase config
+```
 
-### Social Analyzer
-`social-analyzer` — OSINT framework for searching usernames across 1000+ social networks. Forked from `qeeqbox/social-analyzer`. Local clone at `C:\Users\ratik\Documents\GitHub\social-analyzer`.
+4. Install dependencies and start development server:
+```bash
+bun install
+bun dev
+```
 
-### OpenMontage
-`openmontage` — Agent-first AI video production pipeline: research -> script -> assets -> narration -> music -> captions -> compose -> render. Local clone at `C:\Users\ratik\Documents\GitHub\OpenMontage`.
+Visit `http://localhost:3000` to access the dashboard.
+
+## Architecture
+
+- **Frontend:** Next.js (React) dashboard hosted on Vercel
+- **Authentication:** Firebase Authentication
+- **Database:** Firestore
+- **Storage:** Firebase Storage
+- **Billing:** Stripe Checkout
+- **Background Processing:** Firebase Cloud Functions (planned)
+
+## Available Scripts
+
+The dashboard currently supports:
+- `/dashboard` - Overview of your quota and recent activity
+- `/dashboard/gmaps-scraper` - Google Maps lead extraction
+- `/dashboard/jobs` - View and track job status
+- `/dashboard/billing` - Pricing and subscription management
+
+## Contributing
+
+See individual tool documentation in the `skills/` directory.
