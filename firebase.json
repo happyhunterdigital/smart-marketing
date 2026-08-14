@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "apps/web/.next",
+    "target": "smart-marketing",
+    "public": "apps/web/out",
     "ignore": [
       "firebase.json",
       "**/.*",
