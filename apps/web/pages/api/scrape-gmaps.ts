@@ -1,6 +1,6 @@
 // pages/api/scrape-gmaps.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { firestore } from '../../src/lib/firebase/config';
+import { firestore } from '../../lib/firebase/config';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 // POST /api/scrape-gmaps

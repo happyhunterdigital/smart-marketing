@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { firebaseAuth } from '../src/lib/firebase/config';
+import { firebaseAuth } from '../lib/firebase/config';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function App({ Component, pageProps }: AppProps) {

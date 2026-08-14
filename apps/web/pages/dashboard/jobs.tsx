@@ -1,6 +1,6 @@
-import DashboardLayout from '../components/DashboardLayout';
+import DashboardLayout from '../../components/DashboardLayout';
 import { useState, useEffect } from 'react';
-import { firebaseAuth, firestore } from '../lib/firebase/config';
+import { firebaseAuth, firestore } from '../../lib/firebase/config';
 import { collection, query as firestoreQuery, where, onSnapshot, orderBy } from 'firebase/firestore';
 
 interface Job {

@@ -1,7 +1,7 @@
 // pages/api/webhook.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
-import { firestore } from '../../src/lib/firebase/config';
+import { firestore } from '../../lib/firebase/config';
 import { doc, updateDoc } from 'firebase/firestore';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
