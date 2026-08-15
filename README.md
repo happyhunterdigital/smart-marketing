@@ -1,11 +1,11 @@
 # Smart Marketing - All-in-One Marketing Tools Platform
 
-A collection of self-hosted marketing tools for automated lead generation, customer engagement, and sales outreach.
+A collection of self-hosted marketing tools for automated lead generation, customer engagement, and autonomous sales outreach.
 
 ## Tools
 
-- **Comp AI CRM** - Agentic-first CRM designed for AI agents
-- **Google Maps Scraper** - Extract business leads from Google Maps
+- **Happy Hunter CRM** - Agentic-first CRM designed for AI agents ([happyhunterdigital/crm](https://github.com/happyhunterdigital/crm))
+- **Google Maps Scraper** - Extract business leads from Google Maps ([happyhunterdigital/google-maps-scraper](https://github.com/happyhunterdigital/google-maps-scraper))
 - **OpenReply** - Instagram comment-to-DM automation
 - **OpenWA** - Self-hosted WhatsApp API gateway
 - **Social Analyzer** - OSINT username search across social networks
@@ -19,11 +19,20 @@ smart-marketing/
 ├── apps/
 │   └── web/                 # Next.js frontend dashboard
 │       ├── pages/
+│       │   ├── dashboard/
+│       │   │   ├── crm.tsx            # Happy Hunter CRM Control Center
+│       │   │   ├── gmaps-scraper.tsx  # Google Maps Lead Extraction
+│       │   │   ├── index.tsx          # Master Platform Dashboard
+│       │   │   ├── jobs.tsx           # Background Jobs Tracking
+│       │   │   └── billing.tsx        # Subscriptions & Billing
+│       │   ├── login.tsx
+│       │   └── signup.tsx
 │       ├── components/
 │       ├── styles/
 │       ├── package.json
 │       └── .env.local
 ├── skills/                  # Tool documentation and guides
+│   ├── happyhunter-crm/     # Happy Hunter Agentic CRM skill
 │   ├── compai-crm/
 │   ├── google-maps-scraper/
 │   ├── openmontage/
@@ -78,14 +87,15 @@ Visit `http://localhost:3000` to access the dashboard.
 - **Database:** Firestore
 - **Storage:** Firebase Storage
 - **Billing:** Stripe Checkout
-- **Background Processing:** Firebase Cloud Functions (planned)
+- **Autonomous CRM Agent:** Eve Agent + NestJS tRPC + Next.js 16 ([happyhunterdigital/crm](https://github.com/happyhunterdigital/crm))
 
-## Available Scripts
+## Available Dashboards & Modules
 
 The dashboard currently supports:
-- `/dashboard` - Overview of your quota and recent activity
+- `/dashboard` - Overview of all integrated marketing & lead generation tools
+- `/dashboard/crm` - Happy Hunter CRM agent status, pipeline sync & research dispatch
 - `/dashboard/gmaps-scraper` - Google Maps lead extraction
-- `/dashboard/jobs` - View and track job status
+- `/dashboard/jobs` - View and track asynchronous background jobs
 - `/dashboard/billing` - Pricing and subscription management
 
 ## Contributing

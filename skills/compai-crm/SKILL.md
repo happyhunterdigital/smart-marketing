@@ -1,15 +1,16 @@
 ---
 name: compai-crm
-description: Work on Comp AI CRM (trycompai/crm) — an open-source, agentic-first CRM designed for AI agents. Use when the user mentions the CRM repo, the eve agent, contact/company/deal records, Agent tabs, mailbox sync, evidence-ledger facts, agent tools/skills/schedules, better-auth sign-in, or applying it to a happyhunterdigital repo.
+description: Work on Happy Hunter CRM (formerly Comp AI CRM / happyhunterdigital/crm) — an open-source, agentic-first CRM designed for autonomous AI agents. Use when the user mentions the CRM repo, the eve agent, contact/company/deal records, Agent tabs, mailbox sync, evidence-ledger facts, agent tools/skills/schedules, better-auth sign-in, or applying it to a happyhunterdigital repo.
 ---
 
-# Comp AI CRM — agentic-first CRM (trycompai/crm)
+# Happy Hunter CRM (formerly Comp AI CRM) — Agentic-First CRM (happyhunterdigital/crm)
 
 MIT-licensed, open-source CRM where **the agent is not a feature of the CRM — the CRM is where
 the agent keeps its notes**. The agent runs its own deployment, on its own schedule, against its
 own work queue, and stops when its research budget runs out.
 
-Local clone (source of truth): `C:\Users\ratik\Documents\GitHub\crm` (default branch `release` is
+- **Primary Repository:** [https://github.com/happyhunterdigital/crm](https://github.com/happyhunterdigital/crm)
+- **Local clone (source of truth):** `C:\Users\ratik\Documents\GitHub\crm` (default branch `release` is
 the last tagged release; `main` is unreleased work). Read `AGENTS.md` first — it indexes which doc
 to read before touching any area, and every repo rule is in there.
 
@@ -95,7 +96,7 @@ markdown, a schedule is a file, the runtime handles durability.
 ## Quick start
 
 ```sh
-git clone https://github.com/trycompai/crm.git && cd crm   # branch: release
+git clone https://github.com/happyhunterdigital/crm.git && cd crm   # branch: release
 cp .env.example .env
 bun install
 docker compose up -d          # Postgres on :5432
@@ -108,9 +109,6 @@ App `:3000`, API `:3001`, agent `:2000`. Set `BETTER_AUTH_SECRET`, `ALLOWED_SIGN
 and/or Microsoft OAuth creds. Google redirect URI: `<API_URL>/api/auth/callback/google`; Microsoft:
 `<API_URL>/api/auth/callback/microsoft` (the API's origin, not the app's).
 
-Tasks: `bun run build|test|check-types|lint|format|db:migrate|db:seed|db:studio`, scoped with
-`--filter=<app|api|agent>`.
-
 ## Deploying
 
 Three independent deployments (Next.js app, NestJS API, agent) + a Postgres. They only must agree
@@ -120,14 +118,9 @@ both halves sit on subdomains of one parent. Add the provider redirect URIs for 
 `CRON_SECRET` and schedule `POST /internal/sync/mailboxes`. Regenerate and commit `server.ts` with
 any router change.
 
-## Sign-in providers (quick reference)
-
-- **Google**: Cloud console → OAuth client ID → Web application → redirect URI `…/api/auth/callback/google`; enable Gmail + Calendar APIs. Set both ID+secret or neither.
-- **Microsoft**: Entra app registration → redirect URI `…/api/auth/callback/microsoft` → delegated Graph perms `User.Read` + `Mail.Read` → client secret (copy the Value). Optional `MICROSOFT_TENANT_ID` (`common` default, `organizations`, or your tenant GUID). Client secrets expire — note the expiry (lapsed secret = mail silently stops syncing).
-
 ## Applying to a happyhunterdigital repo
 
-When wiring Comp AI CRM for one of the user's repos/accounts: treat it as a single-tenant CRM +
+When wiring Happy Hunter CRM for one of the user's repos/accounts: treat it as a single-tenant CRM +
 research agent deployment. Stand up Postgres (docker compose), set the required env
 (`BETTER_AUTH_SECRET`, `ALLOWED_SIGN_IN`, at least one OAuth pair, `AGENT_BRIDGE_SECRET` to link
 the Agent tab), deploy the three processes (app/api/agent) with matching `DATABASE_URL` +
