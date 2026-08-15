@@ -19,12 +19,47 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [loading]);
 
   // Public pages that don't require auth
-  const publicPaths = ['/login', '/signup', '/reset-password'];
+  const publicPaths = ['/', '/login', '/signup', '/reset-password'];
   const isPublicPage = publicPaths.includes(router.pathname);
 
   // Show loading state
   if (loading || !appReady) {
-    return <div>Loading...</div>;
+    return (
+      <div className="global-loader">
+        <div className="loader-ring"></div>
+        <span className="loader-brand">HAPPY HUNTER DIGITAL</span>
+        <style jsx>{`
+          .global-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #050505;
+            color: #EAB308;
+            font-family: 'Inter', sans-serif;
+            gap: 16px;
+          }
+          .loader-ring {
+            width: 44px;
+            height: 44px;
+            border: 3px solid rgba(234, 179, 8, 0.15);
+            border-radius: 50%;
+            border-top-color: #EAB308;
+            animation: spin 0.8s ease-in-out infinite;
+          }
+          .loader-brand {
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 800;
+            color: #8E8E93;
+          }
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    );
   }
 
   // Redirect to login if accessing protected page while not logged in
