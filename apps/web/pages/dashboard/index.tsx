@@ -29,10 +29,11 @@ export default function DashboardHome() {
         {/* Welcome Banner */}
         <div className="welcome-banner">
           <div>
-            <span className="platform-tag">⚡ Marketing Cloud Suite</span>
-            <h1 className="banner-title">Welcome to Happy Hunter Digital</h1>
+            <span className="platform-tag">⚡ DIGITAL ENTITY ARCHITECTURE</span>
+            <h1 className="banner-title">Happy Hunter Smart Marketing</h1>
             <p className="banner-desc">
-              Your centralized command center for autonomous AI agents, lead generation, and multi-channel outreach.
+              "Architecting digital dominance for ambitious South African entities."
+              Your command center for autonomous AI research agents, verified lead extraction, and multi-channel marketing automation.
             </p>
           </div>
           <div className="banner-stats">
@@ -49,28 +50,28 @@ export default function DashboardHome() {
 
         {/* Tools Grid */}
         <div className="section-title">
-          <h2>Core Intelligence & Automation Tools</h2>
-          <span>Available across your connected workspace</span>
+          <h2>Autonomous Intelligence & Automation Tools</h2>
+          <span>Mathematical Certainty · Verified Trust · Data Sovereignty</span>
         </div>
 
         <div className="tools-grid">
           {/* Happy Hunter CRM Card */}
           <div className="tool-card featured">
             <div className="tool-card-top">
-              <div className="tool-icon-box blue">⚡</div>
+              <div className="tool-icon-box gold">⚡</div>
               <span className="featured-badge">Autonomous Eve Agent</span>
             </div>
             <h3 className="tool-name">Happy Hunter CRM</h3>
             <p className="tool-desc">
-              Agentic-first CRM where the agent is not a chatbot — it is where the agent keeps its notes.
+              Agentic-first CRM where the agent is not a chatbot — the CRM is where the agent keeps its notes.
               Features Eve durable agents, evidence ledger, mailbox sync, and zero hallucinations.
             </p>
             <div className="tool-footer">
               <div className="tool-tags">
                 <span className="tag">happyhunterdigital/crm</span>
-                <span className="tag">NestJS + Eve</span>
+                <span className="tag">Eve + NestJS</span>
               </div>
-              <Link href="/dashboard/crm" className="tool-btn btn-primary">
+              <Link href="/dashboard/crm" className="tool-btn btn-gold">
                 Open CRM Control Center →
               </Link>
             </div>
@@ -79,10 +80,10 @@ export default function DashboardHome() {
           {/* Google Maps Scraper Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box green">📍</div>
-              <span className="status-badge live">Live</span>
+              <div className="tool-icon-box gold">📍</div>
+              <span className="status-badge live">Live Tool</span>
             </div>
-            <h3 className="tool-name">Google Maps Scraper</h3>
+            <h3 className="tool-name">Google Maps Lead Scraper</h3>
             <p className="tool-desc">
               Extract high-intent business leads, emails, social links, and reviews directly from Google Maps
               with up to 50+ data points per business.
@@ -101,8 +102,8 @@ export default function DashboardHome() {
           {/* OpenReply Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box purple">💬</div>
-              <span className="status-badge upcoming">Skill Available</span>
+              <div className="tool-icon-box gold">💬</div>
+              <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
             <h3 className="tool-name">OpenReply (Instagram DM)</h3>
             <p className="tool-desc">
@@ -123,8 +124,8 @@ export default function DashboardHome() {
           {/* OpenWA Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box green">📱</div>
-              <span className="status-badge upcoming">Skill Available</span>
+              <div className="tool-icon-box gold">📱</div>
+              <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
             <h3 className="tool-name">OpenWA (WhatsApp API)</h3>
             <p className="tool-desc">
@@ -145,8 +146,8 @@ export default function DashboardHome() {
           {/* Social Analyzer Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box orange">🔍</div>
-              <span className="status-badge upcoming">Skill Available</span>
+              <div className="tool-icon-box gold">🔍</div>
+              <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
             <h3 className="tool-name">Social Analyzer</h3>
             <p className="tool-desc">
@@ -167,8 +168,8 @@ export default function DashboardHome() {
           {/* OpenMontage Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box pink">🎬</div>
-              <span className="status-badge upcoming">Skill Available</span>
+              <div className="tool-icon-box gold">🎬</div>
+              <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
             <h3 className="tool-name">OpenMontage (AI Video)</h3>
             <p className="tool-desc">
@@ -195,23 +196,23 @@ export default function DashboardHome() {
           }
 
           .welcome-banner {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid #334155;
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
             border-radius: 12px;
             padding: 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
           }
 
           .platform-tag {
             font-size: 11px;
-            font-weight: 700;
-            color: #38bdf8;
+            font-weight: 800;
+            color: #EAB308;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1.2px;
             margin-bottom: 8px;
             display: inline-block;
           }
@@ -219,15 +220,16 @@ export default function DashboardHome() {
           .banner-title {
             font-size: 26px;
             font-weight: 800;
-            color: #f8fafc;
+            color: #FFFFFF;
             margin: 0 0 8px;
+            letter-spacing: -0.5px;
           }
 
           .banner-desc {
             font-size: 13.5px;
-            color: #94a3b8;
+            color: #8E8E93;
             margin: 0;
-            max-width: 600px;
+            max-width: 620px;
             line-height: 1.5;
           }
 
@@ -237,8 +239,8 @@ export default function DashboardHome() {
           }
 
           .banner-stat {
-            background: #0f172a;
-            border: 1px solid #334155;
+            background: #141414;
+            border: 1px solid #262626;
             border-radius: 8px;
             padding: 14px 20px;
             display: flex;
@@ -250,14 +252,15 @@ export default function DashboardHome() {
           .stat-num {
             font-size: 22px;
             font-weight: 800;
-            color: #38bdf8;
+            color: #EAB308;
           }
 
           .stat-label {
-            font-size: 11px;
-            color: #64748b;
+            font-size: 10px;
+            color: #8E8E93;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             margin-top: 4px;
           }
 
@@ -269,14 +272,15 @@ export default function DashboardHome() {
 
           .section-title h2 {
             font-size: 18px;
-            font-weight: 700;
-            color: #f8fafc;
+            font-weight: 800;
+            color: #FFFFFF;
             margin: 0;
           }
 
           .section-title span {
             font-size: 12px;
-            color: #64748b;
+            color: #8E8E93;
+            font-weight: 600;
           }
 
           .tools-grid {
@@ -286,8 +290,8 @@ export default function DashboardHome() {
           }
 
           .tool-card {
-            background: #0f172a;
-            border: 1px solid #1e293b;
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
             border-radius: 12px;
             padding: 24px;
             display: flex;
@@ -296,14 +300,14 @@ export default function DashboardHome() {
           }
 
           .tool-card:hover {
-            border-color: #334155;
+            border-color: #EAB308;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
           }
 
           .tool-card.featured {
-            border-color: rgba(56, 189, 248, 0.4);
-            background: linear-gradient(180deg, rgba(14, 165, 233, 0.06) 0%, #0f172a 100%);
+            border-color: rgba(234, 179, 8, 0.4);
+            background: linear-gradient(180deg, rgba(234, 179, 8, 0.06) 0%, #0D0D0D 100%);
           }
 
           .tool-card-top {
@@ -316,24 +320,23 @@ export default function DashboardHome() {
           .tool-icon-box {
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 18px;
           }
 
-          .tool-icon-box.blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-          .tool-icon-box.green { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
-          .tool-icon-box.purple { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
-          .tool-icon-box.orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
-          .tool-icon-box.pink { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+          .tool-icon-box.gold {
+            background: rgba(234, 179, 8, 0.15);
+            color: #EAB308;
+          }
 
           .featured-badge {
             font-size: 10px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: white;
+            font-weight: 800;
+            background: #EAB308;
+            color: #050505;
             padding: 3px 8px;
             border-radius: 12px;
             text-transform: uppercase;
@@ -341,31 +344,32 @@ export default function DashboardHome() {
 
           .status-badge {
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 800;
             padding: 3px 8px;
             border-radius: 12px;
           }
 
           .status-badge.live {
-            background: rgba(74, 222, 128, 0.15);
-            color: #4ade80;
+            background: rgba(234, 179, 8, 0.2);
+            color: #EAB308;
           }
 
           .status-badge.upcoming {
-            background: #1e293b;
-            color: #94a3b8;
+            background: #141414;
+            color: #8E8E93;
+            border: 1px solid #262626;
           }
 
           .tool-name {
             font-size: 17px;
-            font-weight: 700;
-            color: #f8fafc;
+            font-weight: 800;
+            color: #FFFFFF;
             margin: 0 0 8px;
           }
 
           .tool-desc {
             font-size: 13px;
-            color: #94a3b8;
+            color: #8E8E93;
             line-height: 1.5;
             margin: 0 0 20px;
             flex: 1;
@@ -385,10 +389,11 @@ export default function DashboardHome() {
 
           .tag {
             font-size: 11px;
-            background: #1e293b;
-            color: #cbd5e1;
-            padding: 2px 8px;
+            background: #141414;
+            color: #D1D5DB;
+            padding: 3px 8px;
             border-radius: 4px;
+            border: 1px solid #262626;
           }
 
           .tool-btn {
@@ -398,30 +403,31 @@ export default function DashboardHome() {
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             transition: all 0.15s ease;
           }
 
-          .btn-primary {
-            background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: white;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+          .btn-gold {
+            background: #EAB308;
+            color: #050505;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.35);
           }
 
-          .btn-primary:hover {
-            opacity: 0.95;
+          .btn-gold:hover {
+            background: #ca8a04;
             transform: translateY(-1px);
           }
 
           .btn-secondary {
-            background: #1e293b;
-            color: #f1f5f9;
-            border: 1px solid #334155;
+            background: #141414;
+            color: #FFFFFF;
+            border: 1px solid #262626;
           }
 
           .btn-secondary:hover {
-            background: #334155;
+            background: #1F1F1F;
+            border-color: #EAB308;
           }
         `}</style>
       </div>

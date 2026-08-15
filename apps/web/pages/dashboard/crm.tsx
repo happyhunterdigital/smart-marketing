@@ -106,7 +106,7 @@ export default function HappyHunterCRMPage() {
           <div className="hero-content">
             <div className="hero-badge">
               <span className="pulse-dot"></span>
-              <span>Autonomous Agentic CRM</span>
+              <span>Autonomous Agentic CRM · Mathematical Certainty</span>
             </div>
             <h1 className="hero-title">Happy Hunter CRM</h1>
             <p className="hero-subtitle">
@@ -129,7 +129,7 @@ export default function HappyHunterCRMPage() {
               href="http://localhost:3000"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-gold"
             >
               🚀 Launch Standalone CRM (Port 3000)
             </a>
@@ -140,7 +140,7 @@ export default function HappyHunterCRMPage() {
         <div className="stats-grid">
           <div className="stat-card">
             <div className="stat-label">Eve Agent Status</div>
-            <div className="stat-value text-green">
+            <div className="stat-value text-gold">
               <span className="status-indicator online"></span>
               Active & Dispatching
             </div>
@@ -150,18 +150,18 @@ export default function HappyHunterCRMPage() {
           <div className="stat-card">
             <div className="stat-label">Facts Ledger</div>
             <div className="stat-value">1,482 Facts</div>
-            <div className="stat-footer">94.2% Verified · Zero Hallucinations</div>
+            <div className="stat-footer">94.2% Verified · Zero Guesswork</div>
           </div>
 
           <div className="stat-card">
             <div className="stat-label">Mailbox Synchronizer</div>
-            <div className="stat-value text-blue">Gmail & M365 Active</div>
+            <div className="stat-value text-gold">Gmail & M365 Active</div>
             <div className="stat-footer">Forward-only, read-only sync (:3001)</div>
           </div>
 
           <div className="stat-card">
             <div className="stat-label">Data Boundaries</div>
-            <div className="stat-value text-purple">Deny-All Egress</div>
+            <div className="stat-value text-white">Deny-All Egress</div>
             <div className="stat-footer">Zero DB access inside sandbox</div>
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function HappyHunterCRMPage() {
               <div className="card">
                 <div className="card-header">
                   <h3 className="card-title">Live Agent Activity & Evidence Stream</h3>
-                  <span className="live-pill">Live Updates</span>
+                  <span className="live-pill">Live Stream</span>
                 </div>
                 <div className="activity-list">
                   {activities.map((act) => (
@@ -298,7 +298,7 @@ export default function HappyHunterCRMPage() {
                       type="text"
                       value={researchTarget}
                       onChange={(e) => setResearchTarget(e.target.value)}
-                      placeholder="e.g. alex.rivers@stripe.com or happyhunter.digital"
+                      placeholder="e.g. leslie@happyhunter.digital or enterprise.co.za"
                       required
                     />
                   </div>
@@ -316,7 +316,7 @@ export default function HappyHunterCRMPage() {
 
                   <div className="form-group">
                     <label>&nbsp;</label>
-                    <button type="submit" disabled={isResearching} className="btn btn-primary">
+                    <button type="submit" disabled={isResearching} className="btn btn-gold">
                       {isResearching ? 'Agent Researching...' : 'Dispatch Eve Agent'}
                     </button>
                   </div>
@@ -461,15 +461,15 @@ bun run dev
           }
 
           .crm-hero {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 1px solid #334155;
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
             border-radius: 12px;
             padding: 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
           }
 
           .hero-content {
@@ -480,14 +480,14 @@ bun run dev
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #38bdf8;
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #EAB308;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
             margin-bottom: 12px;
           }
@@ -495,9 +495,9 @@ bun run dev
           .pulse-dot {
             width: 7px;
             height: 7px;
-            background: #38bdf8;
+            background: #EAB308;
             border-radius: 50%;
-            box-shadow: 0 0 8px #38bdf8;
+            box-shadow: 0 0 8px #EAB308;
             animation: pulse 1.5s infinite;
           }
 
@@ -509,7 +509,7 @@ bun run dev
           .hero-title {
             font-size: 28px;
             font-weight: 800;
-            color: #f8fafc;
+            color: #FFFFFF;
             margin: 0 0 8px;
             letter-spacing: -0.5px;
           }
@@ -517,12 +517,12 @@ bun run dev
           .hero-subtitle {
             font-size: 14px;
             line-height: 1.6;
-            color: #94a3b8;
+            color: #8E8E93;
             margin: 0;
           }
 
           .hero-subtitle strong {
-            color: #e2e8f0;
+            color: #FFFFFF;
           }
 
           .hero-actions {
@@ -536,35 +536,37 @@ bun run dev
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 16px;
+            padding: 11px 18px;
             border-radius: 8px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.15s ease;
             border: none;
+            font-family: 'Inter', sans-serif;
           }
 
-          .btn-primary {
-            background: linear-gradient(135deg, #0284c7, #2563eb);
-            color: white;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+          .btn-gold {
+            background: #EAB308;
+            color: #050505;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.35);
           }
 
-          .btn-primary:hover {
-            opacity: 0.92;
+          .btn-gold:hover {
+            background: #ca8a04;
             transform: translateY(-1px);
           }
 
           .btn-secondary {
-            background: #1e293b;
-            color: #f1f5f9;
-            border: 1px solid #334155;
+            background: #141414;
+            color: #FFFFFF;
+            border: 1px solid #262626;
           }
 
           .btn-secondary:hover {
-            background: #334155;
+            background: #1F1F1F;
+            border-color: #EAB308;
           }
 
           .stats-grid {
@@ -574,34 +576,33 @@ bun run dev
           }
 
           .stat-card {
-            background: #0f172a;
-            border: 1px solid #1e293b;
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
             border-radius: 10px;
             padding: 18px;
           }
 
           .stat-label {
-            font-size: 12px;
-            color: #64748b;
-            font-weight: 600;
+            font-size: 11px;
+            color: #8E8E93;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             margin-bottom: 6px;
           }
 
           .stat-value {
             font-size: 20px;
-            font-weight: 700;
-            color: #f8fafc;
+            font-weight: 800;
+            color: #FFFFFF;
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 6px;
           }
 
-          .text-green { color: #4ade80; }
-          .text-blue { color: #38bdf8; }
-          .text-purple { color: #c084fc; }
+          .text-gold { color: #EAB308; }
+          .text-white { color: #FFFFFF; }
 
           .status-indicator {
             width: 8px;
@@ -610,42 +611,44 @@ bun run dev
           }
 
           .status-indicator.online {
-            background: #4ade80;
-            box-shadow: 0 0 8px #4ade80;
+            background: #EAB308;
+            box-shadow: 0 0 8px #EAB308;
           }
 
           .stat-footer {
             font-size: 11px;
-            color: #64748b;
+            color: #8E8E93;
           }
 
           .crm-tabs {
             display: flex;
             gap: 8px;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid #1F1F1F;
             padding-bottom: 4px;
           }
 
           .tab-button {
             background: transparent;
             border: none;
-            color: #94a3b8;
+            color: #8E8E93;
             padding: 10px 16px;
             border-radius: 6px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.15s ease;
+            font-family: 'Inter', sans-serif;
           }
 
           .tab-button:hover {
-            color: #f8fafc;
-            background: #1e293b;
+            color: #FFFFFF;
+            background: #141414;
           }
 
           .tab-button.active {
-            color: #38bdf8;
-            background: rgba(56, 189, 248, 0.1);
+            color: #EAB308;
+            background: rgba(234, 179, 8, 0.1);
+            border-bottom: 2px solid #EAB308;
           }
 
           .tab-content {
@@ -667,8 +670,8 @@ bun run dev
           }
 
           .card {
-            background: #0f172a;
-            border: 1px solid #1e293b;
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
             border-radius: 10px;
             padding: 24px;
           }
@@ -682,33 +685,33 @@ bun run dev
 
           .card-title {
             font-size: 16px;
-            font-weight: 700;
-            color: #f8fafc;
+            font-weight: 800;
+            color: #FFFFFF;
             margin: 0;
           }
 
           .card-desc {
             font-size: 12px;
-            color: #64748b;
+            color: #8E8E93;
             margin: 4px 0 0;
           }
 
           .live-pill {
             font-size: 10px;
-            font-weight: 700;
-            background: rgba(74, 222, 128, 0.1);
-            color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.2);
+            font-weight: 800;
+            background: rgba(234, 179, 8, 0.15);
+            color: #EAB308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
             padding: 2px 8px;
             border-radius: 12px;
           }
 
           .info-pill {
             font-size: 10px;
-            font-weight: 700;
-            background: rgba(56, 189, 248, 0.1);
-            color: #38bdf8;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-weight: 800;
+            background: #141414;
+            color: #8E8E93;
+            border: 1px solid #262626;
             padding: 2px 8px;
             border-radius: 12px;
           }
@@ -723,9 +726,9 @@ bun run dev
             display: flex;
             gap: 12px;
             padding: 12px;
-            background: #1e293b;
+            background: #141414;
             border-radius: 8px;
-            border: 1px solid #334155;
+            border: 1px solid #262626;
           }
 
           .type-badge {
@@ -737,27 +740,27 @@ bun run dev
           }
 
           .badge-verified {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid #4ade80;
+            background: rgba(234, 179, 8, 0.2);
+            color: #EAB308;
+            border: 1px solid #EAB308;
           }
 
           .badge-probable {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
-            border: 1px solid #fbbf24;
+            background: rgba(239, 68, 68, 0.2);
+            color: #EF4444;
+            border: 1px solid #EF4444;
           }
 
           .badge-dispatch {
-            background: rgba(56, 189, 248, 0.2);
-            color: #38bdf8;
-            border: 1px solid #38bdf8;
+            background: #1F1F1F;
+            color: #FFFFFF;
+            border: 1px solid #333333;
           }
 
           .badge-sync {
-            background: rgba(192, 132, 252, 0.2);
-            color: #c084fc;
-            border: 1px solid #c084fc;
+            background: rgba(234, 179, 8, 0.1);
+            color: #EAB308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
           }
 
           .activity-main {
@@ -773,18 +776,18 @@ bun run dev
 
           .activity-title {
             font-size: 13px;
-            font-weight: 600;
-            color: #f1f5f9;
+            font-weight: 700;
+            color: #FFFFFF;
           }
 
           .activity-time {
             font-size: 11px;
-            color: #64748b;
+            color: #8E8E93;
           }
 
           .activity-detail {
             font-size: 12px;
-            color: #94a3b8;
+            color: #8E8E93;
             margin: 0;
             line-height: 1.4;
           }
@@ -800,33 +803,34 @@ bun run dev
             justify-content: space-between;
             align-items: center;
             padding: 10px 12px;
-            background: #1e293b;
+            background: #141414;
             border-radius: 8px;
-            border: 1px solid #334155;
+            border: 1px solid #262626;
           }
 
           .cap-info strong {
             display: block;
             font-size: 13px;
-            color: #f1f5f9;
+            color: #FFFFFF;
             margin-bottom: 2px;
           }
 
           .cap-info span {
             font-size: 11px;
-            color: #94a3b8;
+            color: #8E8E93;
           }
 
           .status-badge {
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 800;
             padding: 3px 8px;
             border-radius: 4px;
           }
 
           .status-ready {
-            background: rgba(74, 222, 128, 0.15);
-            color: #4ade80;
+            background: rgba(234, 179, 8, 0.15);
+            color: #EAB308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
           }
 
           .research-form {
@@ -850,45 +854,47 @@ bun run dev
 
           label {
             font-size: 12px;
-            font-weight: 600;
-            color: #94a3b8;
+            font-weight: 700;
+            color: #FFFFFF;
           }
 
           input[type='text'], select {
-            background: #1e293b;
-            border: 1px solid #334155;
-            color: #f8fafc;
+            background: #141414;
+            border: 1px solid #262626;
+            color: #FFFFFF;
             padding: 10px 12px;
             border-radius: 6px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
           }
 
           input[type='text']:focus, select:focus {
             outline: none;
-            border-color: #38bdf8;
+            border-color: #EAB308;
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
           }
 
           .console-output {
-            background: #020617;
-            border: 1px solid #1e293b;
+            background: #000000;
+            border: 1px solid #1F1F1F;
             border-radius: 8px;
             overflow: hidden;
             margin-top: 16px;
           }
 
           .console-header {
-            background: #0f172a;
+            background: #0D0D0D;
             padding: 8px 14px;
             font-size: 11px;
-            font-weight: 700;
-            color: #94a3b8;
+            font-weight: 800;
+            color: #8E8E93;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid #1F1F1F;
           }
 
           .agent-typing {
-            color: #38bdf8;
+            color: #EAB308;
             animation: pulse 1s infinite;
           }
 
@@ -896,7 +902,7 @@ bun run dev
             padding: 14px;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 12px;
-            color: #38bdf8;
+            color: #EAB308;
             margin: 0;
             line-height: 1.6;
           }
@@ -914,18 +920,18 @@ bun run dev
           .law-item {
             display: flex;
             gap: 14px;
-            background: #1e293b;
+            background: #141414;
             padding: 14px;
             border-radius: 8px;
-            border: 1px solid #334155;
+            border: 1px solid #262626;
           }
 
           .law-num {
             width: 28px;
             height: 28px;
-            background: #38bdf8;
-            color: #0f172a;
-            font-weight: 800;
+            background: #EAB308;
+            color: #050505;
+            font-weight: 900;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -937,14 +943,14 @@ bun run dev
           .law-body strong {
             display: block;
             font-size: 13.5px;
-            color: #f8fafc;
+            color: #FFFFFF;
             margin-bottom: 4px;
           }
 
           .law-body p {
             margin: 0;
             font-size: 12px;
-            color: #94a3b8;
+            color: #8E8E93;
             line-height: 1.4;
           }
 
@@ -955,31 +961,31 @@ bun run dev
           }
 
           .evidence-rule-card {
-            background: #1e293b;
+            background: #141414;
             padding: 14px;
             border-radius: 8px;
-            border: 1px solid #334155;
+            border: 1px solid #262626;
           }
 
           .evidence-rule-title {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 13px;
             margin-bottom: 6px;
           }
 
-          .verified-text { color: #4ade80; }
-          .probable-text { color: #fbbf24; }
+          .verified-text { color: #EAB308; }
+          .probable-text { color: #EF4444; }
 
           .evidence-rule-card p {
             margin: 0;
             font-size: 12px;
-            color: #94a3b8;
+            color: #8E8E93;
             line-height: 1.4;
           }
 
           .code-block {
-            background: #020617;
-            border: 1px solid #1e293b;
+            background: #000000;
+            border: 1px solid #1F1F1F;
             border-radius: 8px;
             padding: 16px;
             overflow-x: auto;
@@ -989,7 +995,7 @@ bun run dev
             margin: 0;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 12px;
-            color: #38bdf8;
+            color: #EAB308;
             line-height: 1.5;
           }
         `}</style>
