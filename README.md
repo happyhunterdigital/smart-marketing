@@ -1,6 +1,8 @@
 # Smart Marketing - All-in-One Marketing Tools Platform
 
-A collection of self-hosted marketing tools for automated lead generation, customer engagement, and autonomous sales outreach.
+A collection of self-hosted marketing tools for automated lead generation, customer engagement, and autonomous sales outreach — built and branded by **Happy Hunter Digital**.
+
+> Brand, colours, typography, and voice: see [BRAND.md](BRAND.md).
 
 ## Tools
 
@@ -16,6 +18,7 @@ A collection of self-hosted marketing tools for automated lead generation, custo
 ```
 smart-marketing/
 ├── README.md
+├── BRAND.md
 ├── apps/
 │   └── web/                 # Next.js frontend dashboard
 │       ├── pages/
@@ -82,7 +85,7 @@ Visit `http://localhost:3000` to access the dashboard.
 
 ## Architecture
 
-- **Frontend:** Next.js (React) dashboard hosted on Vercel
+- **Frontend:** Next.js (React) dashboard hosted on Vercel / Firebase Hosting
 - **Authentication:** Firebase Authentication
 - **Database:** Firestore
 - **Storage:** Firebase Storage
