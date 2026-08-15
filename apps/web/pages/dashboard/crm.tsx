@@ -108,11 +108,10 @@ export default function HappyHunterCRMPage() {
               <span className="pulse-dot"></span>
               <span>Autonomous Agentic CRM · Mathematical Certainty</span>
             </div>
-            <h1 className="hero-title">Happy Hunter CRM</h1>
+            <h1 className="hero-title font-display">Happy Hunter CRM</h1>
             <p className="hero-subtitle">
               The agent is not a feature of the CRM — the CRM is where the agent keeps its notes.
-              Powered by <strong>Eve</strong> durable agents, <strong>NestJS tRPC</strong>, and an
-              evidence-first facts ledger.
+              Powered by <strong>Eve</strong> durable agents, <strong>NestJS tRPC</strong>, and an evidence-first facts ledger.
             </p>
           </div>
 
@@ -122,16 +121,18 @@ export default function HappyHunterCRMPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
+              id="crm-hero-github-btn"
             >
-              ⭐ GitHub Repo
+              View on GitHub
             </a>
             <a
               href="http://localhost:3000"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-gold"
+              id="crm-hero-launch-btn"
             >
-              🚀 Launch Standalone CRM (Port 3000)
+              Launch CRM
             </a>
           </div>
         </div>
@@ -166,31 +167,35 @@ export default function HappyHunterCRMPage() {
           </div>
         </div>
 
-        {/* Navigation Tabs */}
+        {/* Navigation Tabs — no emojis in product UI per BRAND.md §5 */}
         <div className="crm-tabs">
           <button
+            id="crm-tab-monitor"
             className={`tab-button ${activeTab === 'monitor' ? 'active' : ''}`}
             onClick={() => setActiveTab('monitor')}
           >
-            ⚡ Live Agent Monitor
+            Live Agent Monitor
           </button>
           <button
+            id="crm-tab-research"
             className={`tab-button ${activeTab === 'research' ? 'active' : ''}`}
             onClick={() => setActiveTab('research')}
           >
-            🔍 Autonomous Research Dispatcher
+            Research Dispatcher
           </button>
           <button
+            id="crm-tab-pipeline"
             className={`tab-button ${activeTab === 'pipeline' ? 'active' : ''}`}
             onClick={() => setActiveTab('pipeline')}
           >
-            📈 Evidence Pipeline & Rules
+            Evidence Pipeline
           </button>
           <button
+            id="crm-tab-setup"
             className={`tab-button ${activeTab === 'setup' ? 'active' : ''}`}
             onClick={() => setActiveTab('setup')}
           >
-            ⚙️ Deployment & Architecture
+            Deployment
           </button>
         </div>
 
@@ -326,7 +331,7 @@ export default function HappyHunterCRMPage() {
               {researchLogs.length > 0 && (
                 <div className="console-output">
                   <div className="console-header">
-                    <span>⚡ Eve Durable Session Output</span>
+                    <span>Eve — Durable Session Output</span>
                     {isResearching && <span className="agent-typing">Running sandbox tools...</span>}
                   </div>
                   <pre className="console-body">
@@ -393,7 +398,7 @@ export default function HappyHunterCRMPage() {
                 <div className="evidence-explanation">
                   <div className="evidence-rule-card">
                     <div className="evidence-rule-title verified-text">
-                      ✓ VERIFIED (Direct Primary Source)
+                      VERIFIED — Direct Primary Source
                     </div>
                     <p>
                       Captured directly from signature blocks (`crm.signature-block`), official domain
@@ -403,7 +408,7 @@ export default function HappyHunterCRMPage() {
 
                   <div className="evidence-rule-card">
                     <div className="evidence-rule-title probable-text">
-                      ? PROBABLE (Inferred / Ambiguous)
+                      PROBABLE — Inferred / Ambiguous
                     </div>
                     <p>
                       Discovered via secondary web queries or ambiguous mentions. Placed in the human
@@ -460,16 +465,31 @@ bun run dev
             gap: 24px;
           }
 
+          /* Double-bezel hero card per BRAND.md §6 */
           .crm-hero {
-            background: #0D0D0D;
-            border: 1px solid #1F1F1F;
-            border-radius: 12px;
-            padding: 32px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            padding: 36px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.08);
+            position: relative;
+            overflow: hidden;
+          }
+
+          /* Subtle amber radial inside hero */
+          .crm-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(251,191,36,0.06) 0%, transparent 70%);
+            pointer-events: none;
           }
 
           .hero-content {
@@ -506,12 +526,15 @@ bun run dev
             50% { opacity: 0.4; transform: scale(0.8); }
           }
 
+          /* Cal Sans display heading per BRAND.md §4 */
           .hero-title {
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 32px;
+            font-weight: 600;
+            font-family: 'CalSans', 'Inter', sans-serif;
             color: #FFFFFF;
-            margin: 0 0 8px;
-            letter-spacing: -0.5px;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
           }
 
           .hero-subtitle {
@@ -547,26 +570,36 @@ bun run dev
             font-family: 'Inter', sans-serif;
           }
 
+          /* CTA: black text on amber — the brand signature per BRAND.md §3 */
           .btn-gold {
-            background: #EAB308;
+            background: #f59e0b;
             color: #050505;
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.35);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid #050505;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
           }
 
           .btn-gold:hover {
-            background: #ca8a04;
+            background: #fbbf24;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.3);
             transform: translateY(-1px);
           }
 
+          .btn-gold:active {
+            transform: scale(0.98);
+          }
+
           .btn-secondary {
-            background: #141414;
-            color: #FFFFFF;
+            background: transparent;
+            color: #9ca3af;
             border: 1px solid #262626;
           }
 
           .btn-secondary:hover {
-            background: #1F1F1F;
-            border-color: #EAB308;
+            color: #FFFFFF;
+            border-color: rgba(245, 158, 11, 0.5);
           }
 
           .stats-grid {
@@ -576,19 +609,26 @@ bun run dev
           }
 
           .stat-card {
-            background: #0D0D0D;
-            border: 1px solid #1F1F1F;
-            border-radius: 10px;
-            padding: 18px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            transition: box-shadow 0.2s ease;
           }
 
+          .stat-card:hover {
+            box-shadow: 0 0 20px rgba(251,191,36,0.06);
+          }
+
+          /* Forensic mono label per BRAND.md §4 */
           .stat-label {
-            font-size: 11px;
-            color: #8E8E93;
+            font-size: 10px;
+            color: #9ca3af;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 6px;
+            letter-spacing: 0.2em;
+            font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+            margin-bottom: 8px;
           }
 
           .stat-value {
@@ -601,18 +641,18 @@ bun run dev
             margin-bottom: 6px;
           }
 
-          .text-gold { color: #EAB308; }
+          .text-gold { color: #f59e0b; }
           .text-white { color: #FFFFFF; }
 
           .status-indicator {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
           }
 
           .status-indicator.online {
-            background: #EAB308;
-            box-shadow: 0 0 8px #EAB308;
+            background: #f59e0b;
+            box-shadow: 0 0 8px rgba(245,158,11,0.8);
           }
 
           .stat-footer {
@@ -630,25 +670,25 @@ bun run dev
           .tab-button {
             background: transparent;
             border: none;
-            color: #8E8E93;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-size: 13px;
+            border-bottom: 2px solid transparent;
+            color: #9ca3af;
+            padding: 10px 18px;
+            font-size: 12px;
             font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             cursor: pointer;
             transition: all 0.15s ease;
-            font-family: 'Inter', sans-serif;
           }
 
           .tab-button:hover {
             color: #FFFFFF;
-            background: #141414;
           }
 
           .tab-button.active {
-            color: #EAB308;
-            background: rgba(234, 179, 8, 0.1);
-            border-bottom: 2px solid #EAB308;
+            color: #f59e0b;
+            border-bottom-color: #f59e0b;
           }
 
           .tab-content {
@@ -670,10 +710,11 @@ bun run dev
           }
 
           .card {
-            background: #0D0D0D;
-            border: 1px solid #1F1F1F;
-            border-radius: 10px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
             padding: 24px;
+            transition: box-shadow 0.2s ease;
           }
 
           .card-header {
@@ -697,23 +738,27 @@ bun run dev
           }
 
           .live-pill {
-            font-size: 10px;
-            font-weight: 800;
-            background: rgba(234, 179, 8, 0.15);
-            color: #EAB308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
-            padding: 2px 8px;
-            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 3px 9px;
+            border-radius: 20px;
           }
 
           .info-pill {
-            font-size: 10px;
-            font-weight: 800;
-            background: #141414;
-            color: #8E8E93;
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: transparent;
+            color: #6b7280;
             border: 1px solid #262626;
-            padding: 2px 8px;
-            border-radius: 12px;
+            padding: 3px 9px;
+            border-radius: 20px;
           }
 
           .activity-list {
@@ -725,10 +770,15 @@ bun run dev
           .activity-item {
             display: flex;
             gap: 12px;
-            padding: 12px;
-            background: #141414;
-            border-radius: 8px;
-            border: 1px solid #262626;
+            padding: 12px 14px;
+            background: #111111;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: border-color 0.15s ease;
+          }
+
+          .activity-item:hover {
+            border-color: rgba(245,158,11,0.15);
           }
 
           .type-badge {
@@ -740,27 +790,27 @@ bun run dev
           }
 
           .badge-verified {
-            background: rgba(234, 179, 8, 0.2);
-            color: #EAB308;
-            border: 1px solid #EAB308;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.4);
           }
 
           .badge-probable {
-            background: rgba(239, 68, 68, 0.2);
-            color: #EF4444;
-            border: 1px solid #EF4444;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
           }
 
           .badge-dispatch {
-            background: #1F1F1F;
-            color: #FFFFFF;
-            border: 1px solid #333333;
+            background: rgba(255,255,255,0.04);
+            color: #9ca3af;
+            border: 1px solid #262626;
           }
 
           .badge-sync {
-            background: rgba(234, 179, 8, 0.1);
-            color: #EAB308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            background: rgba(245, 158, 11, 0.08);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
           }
 
           .activity-main {
@@ -828,9 +878,13 @@ bun run dev
           }
 
           .status-ready {
-            background: rgba(234, 179, 8, 0.15);
-            color: #EAB308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.25);
           }
 
           .research-form {
@@ -926,13 +980,15 @@ bun run dev
             border: 1px solid #262626;
           }
 
+          /* Black on amber — the brand signature */
           .law-num {
             width: 28px;
             height: 28px;
-            background: #EAB308;
+            background: #f59e0b;
             color: #050505;
             font-weight: 900;
             font-size: 14px;
+            font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -973,8 +1029,8 @@ bun run dev
             margin-bottom: 6px;
           }
 
-          .verified-text { color: #EAB308; }
-          .probable-text { color: #EF4444; }
+          .verified-text { color: #f59e0b; font-family: 'SF Mono', Consolas, monospace; }
+          .probable-text { color: #ef4444; font-family: 'SF Mono', Consolas, monospace; }
 
           .evidence-rule-card p {
             margin: 0;

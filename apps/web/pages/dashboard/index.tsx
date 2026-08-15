@@ -55,10 +55,14 @@ export default function DashboardHome() {
         </div>
 
         <div className="tools-grid">
-          {/* Happy Hunter CRM Card */}
+          {/* Happy Hunter CRM Card — featured */}
           <div className="tool-card featured">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">⚡</div>
+              <div className="tool-icon-box gold">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#050505" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
               <span className="featured-badge">Autonomous Eve Agent</span>
             </div>
             <h3 className="tool-name">Happy Hunter CRM</h3>
@@ -71,7 +75,7 @@ export default function DashboardHome() {
                 <span className="tag">happyhunterdigital/crm</span>
                 <span className="tag">Eve + NestJS</span>
               </div>
-              <Link href="/dashboard/crm" className="tool-btn btn-gold">
+              <Link href="/dashboard/crm" className="tool-btn btn-gold" id="index-crm-btn">
                 Open CRM Control Center →
               </Link>
             </div>
@@ -80,7 +84,11 @@ export default function DashboardHome() {
           {/* Google Maps Scraper Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">📍</div>
+              <div className="tool-icon-box amber-light">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
               <span className="status-badge live">Live Tool</span>
             </div>
             <h3 className="tool-name">Google Maps Lead Scraper</h3>
@@ -93,7 +101,7 @@ export default function DashboardHome() {
                 <span className="tag">Botasaurus</span>
                 <span className="tag">50+ Fields</span>
               </div>
-              <Link href="/dashboard/gmaps-scraper" className="tool-btn btn-secondary">
+              <Link href="/dashboard/gmaps-scraper" className="tool-btn btn-secondary" id="index-gmaps-btn">
                 Start Scraping →
               </Link>
             </div>
@@ -102,10 +110,14 @@ export default function DashboardHome() {
           {/* OpenReply Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">💬</div>
+              <div className="tool-icon-box amber-light">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
               <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
-            <h3 className="tool-name">OpenReply (Instagram DM)</h3>
+            <h3 className="tool-name">OpenReply — Instagram DM</h3>
             <p className="tool-desc">
               Self-hosted Instagram comment-to-DM automation. Comment a keyword on posts/reels to instantly
               trigger tracked link DMs and follow-gating.
@@ -115,7 +127,7 @@ export default function DashboardHome() {
                 <span className="tag">BullMQ</span>
                 <span className="tag">Meta Graph API</span>
               </div>
-              <Link href="/dashboard/jobs" className="tool-btn btn-secondary">
+              <Link href="/dashboard/jobs" className="tool-btn btn-secondary" id="index-openreply-btn">
                 View Queue →
               </Link>
             </div>
@@ -124,10 +136,14 @@ export default function DashboardHome() {
           {/* OpenWA Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">📱</div>
+              <div className="tool-icon-box amber-light">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l.86-.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
               <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
-            <h3 className="tool-name">OpenWA (WhatsApp API)</h3>
+            <h3 className="tool-name">OpenWA — WhatsApp API</h3>
             <p className="tool-desc">
               Self-hosted WhatsApp API gateway powered by Baileys. Send notifications, chat triggers,
               and interactive flows with zero per-message fees.
@@ -137,7 +153,7 @@ export default function DashboardHome() {
                 <span className="tag">Baileys API</span>
                 <span className="tag">Webhooks</span>
               </div>
-              <Link href="/dashboard/jobs" className="tool-btn btn-secondary">
+              <Link href="/dashboard/jobs" className="tool-btn btn-secondary" id="index-openwa-btn">
                 Configure →
               </Link>
             </div>
@@ -146,7 +162,11 @@ export default function DashboardHome() {
           {/* Social Analyzer Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">🔍</div>
+              <div className="tool-icon-box amber-light">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </div>
               <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
             <h3 className="tool-name">Social Analyzer</h3>
@@ -159,7 +179,7 @@ export default function DashboardHome() {
                 <span className="tag">OSINT</span>
                 <span className="tag">1000+ Sites</span>
               </div>
-              <Link href="/dashboard/jobs" className="tool-btn btn-secondary">
+              <Link href="/dashboard/jobs" className="tool-btn btn-secondary" id="index-osint-btn">
                 Explore →
               </Link>
             </div>
@@ -168,10 +188,14 @@ export default function DashboardHome() {
           {/* OpenMontage Card */}
           <div className="tool-card">
             <div className="tool-card-top">
-              <div className="tool-icon-box gold">🎬</div>
+              <div className="tool-icon-box amber-light">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" />
+                </svg>
+              </div>
               <span className="status-badge upcoming">Ready to Deploy</span>
             </div>
-            <h3 className="tool-name">OpenMontage (AI Video)</h3>
+            <h3 className="tool-name">OpenMontage — AI Video</h3>
             <p className="tool-desc">
               Agent-first video production pipeline. Auto-generates captions, B-roll overlays, vertical cuts,
               and viral marketing shorts.
@@ -181,7 +205,7 @@ export default function DashboardHome() {
                 <span className="tag">Remotion</span>
                 <span className="tag">Whisper AI</span>
               </div>
-              <Link href="/dashboard/jobs" className="tool-btn btn-secondary">
+              <Link href="/dashboard/jobs" className="tool-btn btn-secondary" id="index-montage-btn">
                 Explore →
               </Link>
             </div>
@@ -195,34 +219,54 @@ export default function DashboardHome() {
             gap: 28px;
           }
 
+          /* Double-bezel welcome banner per BRAND.md §6 */
           .welcome-banner {
-            background: #0D0D0D;
-            border: 1px solid #1F1F1F;
-            border-radius: 12px;
-            padding: 32px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            padding: 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.06);
+            position: relative;
+            overflow: hidden;
           }
 
+          /* Ambient glow inside banner */
+          .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(251,191,36,0.05) 0%, transparent 70%);
+            pointer-events: none;
+          }
+
+          /* Forensic mono eyebrow per BRAND.md §4 */
           .platform-tag {
-            font-size: 11px;
-            font-weight: 800;
-            color: #EAB308;
+            font-size: 10px;
+            font-weight: 900;
+            color: #f59e0b;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 8px;
+            letter-spacing: 0.2em;
+            font-family: 'SF Mono', Consolas, monospace;
+            margin-bottom: 10px;
             display: inline-block;
           }
 
+          /* Cal Sans display heading per BRAND.md §4 */
           .banner-title {
-            font-size: 26px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 600;
+            font-family: 'CalSans', 'Inter', sans-serif;
             color: #FFFFFF;
-            margin: 0 0 8px;
-            letter-spacing: -0.5px;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
           }
 
           .banner-desc {
@@ -251,8 +295,8 @@ export default function DashboardHome() {
 
           .stat-num {
             font-size: 22px;
-            font-weight: 800;
-            color: #EAB308;
+            font-weight: 900;
+            color: #f59e0b;
           }
 
           .stat-label {
@@ -290,9 +334,9 @@ export default function DashboardHome() {
           }
 
           .tool-card {
-            background: #0D0D0D;
-            border: 1px solid #1F1F1F;
-            border-radius: 12px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
             padding: 24px;
             display: flex;
             flex-direction: column;
@@ -300,14 +344,14 @@ export default function DashboardHome() {
           }
 
           .tool-card:hover {
-            border-color: #EAB308;
+            border-color: rgba(245, 158, 11, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.08);
           }
 
           .tool-card.featured {
-            border-color: rgba(234, 179, 8, 0.4);
-            background: linear-gradient(180deg, rgba(234, 179, 8, 0.06) 0%, #0D0D0D 100%);
+            border-color: rgba(245, 158, 11, 0.3);
+            background: linear-gradient(160deg, rgba(245, 158, 11, 0.06) 0%, #0a0a0a 100%);
           }
 
           .tool-card-top {
@@ -327,19 +371,28 @@ export default function DashboardHome() {
             font-size: 18px;
           }
 
+          /* Gold icon box — used for CRM (black on amber) */
           .tool-icon-box.gold {
-            background: rgba(234, 179, 8, 0.15);
-            color: #EAB308;
+            background: #f59e0b;
+            color: #050505;
           }
 
+          /* Amber-light icon box — used for supporting tools */
+          .tool-icon-box.amber-light {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+          }
+
+          /* Black on amber — CTA badge per BRAND.md §3 */
           .featured-badge {
-            font-size: 10px;
-            font-weight: 800;
-            background: #EAB308;
-            color: #050505;
-            padding: 3px 8px;
-            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: #f59e0b;
+            color: #050505;
+            padding: 3px 9px;
+            border-radius: 20px;
           }
 
           .status-badge {
@@ -350,8 +403,9 @@ export default function DashboardHome() {
           }
 
           .status-badge.live {
-            background: rgba(234, 179, 8, 0.2);
-            color: #EAB308;
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245,158,11,0.25);
           }
 
           .status-badge.upcoming {
@@ -408,26 +462,36 @@ export default function DashboardHome() {
             transition: all 0.15s ease;
           }
 
+          /* Black text on amber — the signature CTA per BRAND.md §3 */
           .btn-gold {
-            background: #EAB308;
+            background: #f59e0b;
             color: #050505;
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.35);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid #050505;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
           }
 
           .btn-gold:hover {
-            background: #ca8a04;
+            background: #fbbf24;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.3);
             transform: translateY(-1px);
           }
 
+          .btn-gold:active {
+            transform: scale(0.98);
+          }
+
           .btn-secondary {
-            background: #141414;
-            color: #FFFFFF;
+            background: transparent;
+            color: #9ca3af;
             border: 1px solid #262626;
           }
 
           .btn-secondary:hover {
-            background: #1F1F1F;
-            border-color: #EAB308;
+            color: #FFFFFF;
+            border-color: rgba(245, 158, 11, 0.4);
           }
         `}</style>
       </div>
