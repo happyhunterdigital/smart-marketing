@@ -48,7 +48,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
       <div className="loading-screen">
         <div className="spinner"></div>
-        <p>Loading Happy Hunter Digital Suite...</p>
+        <p>Architecting digital dominance...</p>
         <style jsx>{`
           .loading-screen {
             display: flex;
@@ -56,17 +56,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: #0f172a;
-            color: #94a3b8;
-            font-family: system-ui, -apple-system, sans-serif;
+            background: #050505;
+            color: #8E8E93;
+            font-family: 'Inter', sans-serif;
           }
           .spinner {
             width: 40px;
             height: 40px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            border: 3px solid rgba(234, 179, 8, 0.15);
             border-radius: 50%;
-            border-top-color: #38bdf8;
-            animation: spin 1s ease-in-out infinite;
+            border-top-color: #EAB308;
+            animation: spin 0.8s ease-in-out infinite;
             margin-bottom: 16px;
           }
           @keyframes spin {
@@ -84,10 +84,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="brand-header">
-          <div className="brand-badge">HH</div>
-          <div>
-            <h3 className="brand-title">Happy Hunter</h3>
-            <span className="brand-subtitle">Marketing Cloud</span>
+          <div className="brand-logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="#050505" />
+            </svg>
+            <span className="logo-symbol">🧠</span>
+          </div>
+          <div className="brand-titles">
+            <h3 className="brand-title">HAPPY HUNTER</h3>
+            <span className="brand-subtitle">SMART MARKETING</span>
           </div>
         </div>
 
@@ -107,7 +112,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           >
             <span className="nav-icon">⚡</span>
             <span>Happy Hunter CRM</span>
-            <span className="badge-new">Agentic</span>
+            <span className="badge-gold">Agentic</span>
           </Link>
 
           <Link
@@ -135,30 +140,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
         </nav>
 
-        <div className="nav-group-label">UPCOMING TOOLS</div>
+        <div className="nav-group-label">AUTONOMOUS SUITE</div>
         <div className="upcoming-tools">
           <div className="upcoming-item">
             <span>💬 OpenReply (IG DM)</span>
-            <span className="badge-soon">Soon</span>
+            <span className="badge-soon">Ready</span>
           </div>
           <div className="upcoming-item">
             <span>📱 OpenWA (WhatsApp)</span>
-            <span className="badge-soon">Soon</span>
+            <span className="badge-soon">Ready</span>
           </div>
           <div className="upcoming-item">
             <span>🎬 OpenMontage (Video)</span>
-            <span className="badge-soon">Soon</span>
+            <span className="badge-soon">Ready</span>
           </div>
         </div>
 
         <div className="sidebar-footer">
           <div className="user-profile-card">
             <div className="user-avatar">
-              {user.email ? user.email.charAt(0).toUpperCase() : 'U'}
+              {user.email ? user.email.charAt(0).toUpperCase() : 'H'}
             </div>
             <div className="user-info">
               <span className="user-email" title={user.email}>{user.email}</span>
-              <span className="user-plan">Plan: {userData?.plan || 'Free Tier'}</span>
+              <span className="user-plan">Plan: {userData?.plan ? userData.plan.toUpperCase() : 'FREE'}</span>
             </div>
           </div>
 
@@ -185,7 +190,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <main className="main-content">
         <header className="top-nav">
           <div className="breadcrumbs">
-            <span>Happy Hunter Digital</span>
+            <span className="breadcrumb-root">Happy Hunter Digital</span>
             <span className="breadcrumb-separator">/</span>
             <span className="breadcrumb-current">
               {currentPath === '/dashboard' ? 'Overview' :
@@ -202,7 +207,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               rel="noopener noreferrer"
               className="github-badge-link"
             >
-              ⭐ GitHub: happyhunterdigital/crm
+              ⭐ happyhunterdigital/crm
             </a>
           </div>
         </header>
@@ -216,15 +221,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         .dashboard-layout {
           display: flex;
           min-height: 100vh;
-          background: #090d16;
-          color: #f1f5f9;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          background: #050505;
+          color: #FFFFFF;
+          font-family: 'Inter', -apple-system, sans-serif;
         }
 
         .sidebar {
           width: 270px;
-          background: #0f172a;
-          border-right: 1px solid #1e293b;
+          background: #0D0D0D;
+          border-right: 1px solid #1F1F1F;
           display: flex;
           flex-direction: column;
           padding: 24px 16px;
@@ -236,44 +241,49 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           align-items: center;
           gap: 12px;
           margin-bottom: 28px;
-          padding: 0 8px;
+          padding: 0 6px;
         }
 
-        .brand-badge {
+        .brand-logo-icon {
           width: 36px;
           height: 36px;
-          background: linear-gradient(135deg, #0284c7, #6366f1);
-          color: white;
-          font-weight: 800;
-          font-size: 14px;
+          background: #EAB308;
+          color: #050505;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 8px;
-          box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 0 16px rgba(234, 179, 8, 0.4);
+          font-size: 18px;
+          position: relative;
+        }
+
+        .brand-titles {
+          display: flex;
+          flex-direction: column;
         }
 
         .brand-title {
-          font-size: 16px;
-          font-weight: 700;
+          font-size: 15px;
+          font-weight: 800;
           margin: 0;
-          color: #f8fafc;
-          letter-spacing: -0.3px;
+          color: #FFFFFF;
+          letter-spacing: 0.5px;
         }
 
         .brand-subtitle {
-          font-size: 11px;
-          color: #64748b;
+          font-size: 10px;
+          color: #EAB308;
           text-transform: uppercase;
-          letter-spacing: 0.8px;
-          font-weight: 600;
+          letter-spacing: 1.2px;
+          font-weight: 700;
         }
 
         .nav-group-label {
           font-size: 10px;
-          color: #64748b;
-          font-weight: 700;
-          letter-spacing: 1px;
+          color: #8E8E93;
+          font-weight: 800;
+          letter-spacing: 1.2px;
           margin: 16px 8px 8px;
         }
 
@@ -288,23 +298,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           align-items: center;
           gap: 10px;
           padding: 10px 12px;
-          color: #94a3b8;
+          color: #D1D5DB;
           text-decoration: none;
           font-size: 13.5px;
           font-weight: 500;
           border-radius: 8px;
           transition: all 0.15s ease;
+          border: 1px solid transparent;
         }
 
         .nav-item:hover {
-          background: #1e293b;
-          color: #f8fafc;
+          background: #141414;
+          color: #FFFFFF;
+          border-color: #262626;
         }
 
         .nav-item.active {
-          background: rgba(14, 165, 233, 0.15);
-          color: #38bdf8;
-          border-left: 3px solid #38bdf8;
+          background: rgba(234, 179, 8, 0.1);
+          color: #EAB308;
+          border-left: 3px solid #EAB308;
+          border-color: rgba(234, 179, 8, 0.25);
           font-weight: 600;
         }
 
@@ -312,12 +325,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           font-size: 16px;
         }
 
-        .badge-new {
+        .badge-gold {
           margin-left: auto;
-          background: linear-gradient(135deg, #0284c7, #2563eb);
-          color: white;
+          background: #EAB308;
+          color: #050505;
           font-size: 9px;
-          font-weight: 700;
+          font-weight: 800;
           text-transform: uppercase;
           padding: 2px 6px;
           border-radius: 4px;
@@ -336,14 +349,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           justify-content: space-between;
           padding: 6px 8px;
           font-size: 12px;
-          color: #64748b;
+          color: #8E8E93;
         }
 
         .badge-soon {
-          background: #1e293b;
-          color: #94a3b8;
+          background: #1A1A1A;
+          color: #EAB308;
+          border: 1px solid rgba(234, 179, 8, 0.2);
           font-size: 9px;
-          padding: 2px 5px;
+          font-weight: 700;
+          padding: 2px 6px;
           border-radius: 3px;
         }
 
@@ -353,29 +368,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           flex-direction: column;
           gap: 12px;
           padding-top: 16px;
-          border-top: 1px solid #1e293b;
+          border-top: 1px solid #1F1F1F;
         }
 
         .user-profile-card {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 8px;
-          background: #1e293b;
+          padding: 8px 10px;
+          background: #141414;
           border-radius: 8px;
+          border: 1px solid #262626;
         }
 
         .user-avatar {
           width: 32px;
           height: 32px;
-          border-radius: 50%;
-          background: #38bdf8;
-          color: #0f172a;
+          border-radius: 6px;
+          background: #EAB308;
+          color: #050505;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: 700;
-          font-size: 13px;
+          font-weight: 800;
+          font-size: 14px;
         }
 
         .user-info {
@@ -387,7 +403,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         .user-email {
           font-size: 12px;
           font-weight: 600;
-          color: #f1f5f9;
+          color: #FFFFFF;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -395,54 +411,55 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         .user-plan {
           font-size: 10px;
-          color: #38bdf8;
+          color: #EAB308;
           text-transform: uppercase;
-          font-weight: 600;
+          font-weight: 700;
         }
 
         .quota-indicator {
-          background: rgba(30, 41, 59, 0.5);
+          background: #141414;
           padding: 10px;
           border-radius: 8px;
-          border: 1px solid #1e293b;
+          border: 1px solid #262626;
         }
 
         .quota-header {
           display: flex;
           justify-content: space-between;
           font-size: 11px;
-          color: #94a3b8;
+          color: #8E8E93;
           margin-bottom: 6px;
         }
 
         .quota-bar {
           height: 4px;
-          background: #334155;
+          background: #262626;
           border-radius: 2px;
           overflow: hidden;
         }
 
         .quota-bar-fill {
           height: 100%;
-          background: #38bdf8;
+          background: #EAB308;
           border-radius: 2px;
         }
 
         .logout-btn {
           background: transparent;
-          border: 1px solid #334155;
-          color: #94a3b8;
+          border: 1px solid #262626;
+          color: #8E8E93;
           padding: 8px;
           border-radius: 6px;
           font-size: 12px;
           cursor: pointer;
           transition: all 0.15s ease;
+          font-weight: 600;
         }
 
         .logout-btn:hover {
-          background: rgba(239, 68, 68, 0.1);
-          color: #ef4444;
-          border-color: #ef4444;
+          background: rgba(239, 68, 68, 0.15);
+          color: #EF4444;
+          border-color: #EF4444;
         }
 
         .main-content {
@@ -450,17 +467,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           display: flex;
           flex-direction: column;
           overflow-y: auto;
+          background: #050505;
         }
 
         .top-nav {
-          height: 60px;
-          border-bottom: 1px solid #1e293b;
+          height: 64px;
+          border-bottom: 1px solid #1F1F1F;
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding: 0 32px;
-          background: rgba(15, 23, 42, 0.7);
-          backdrop-filter: blur(8px);
+          background: rgba(13, 13, 13, 0.85);
+          backdrop-filter: blur(12px);
         }
 
         .breadcrumbs {
@@ -468,33 +486,39 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           align-items: center;
           gap: 8px;
           font-size: 13px;
-          color: #64748b;
+          color: #8E8E93;
+        }
+
+        .breadcrumb-root {
+          color: #8E8E93;
+          font-weight: 600;
         }
 
         .breadcrumb-separator {
-          color: #334155;
+          color: #333333;
         }
 
         .breadcrumb-current {
-          color: #f8fafc;
-          font-weight: 600;
+          color: #FFFFFF;
+          font-weight: 700;
         }
 
         .github-badge-link {
           font-size: 12px;
-          color: #38bdf8;
-          background: rgba(56, 189, 248, 0.1);
-          border: 1px solid rgba(56, 189, 248, 0.2);
-          padding: 6px 12px;
+          color: #EAB308;
+          background: rgba(234, 179, 8, 0.1);
+          border: 1px solid rgba(234, 179, 8, 0.3);
+          padding: 6px 14px;
           border-radius: 20px;
           text-decoration: none;
-          font-weight: 500;
+          font-weight: 600;
           transition: all 0.15s ease;
         }
 
         .github-badge-link:hover {
-          background: rgba(56, 189, 248, 0.2);
-          color: #7dd3fc;
+          background: rgba(234, 179, 8, 0.2);
+          color: #FFFFFF;
+          box-shadow: 0 0 12px rgba(234, 179, 8, 0.3);
         }
 
         .content-container {
