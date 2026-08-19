@@ -33,7 +33,7 @@ export default function DashboardHome() {
             <h1 className="banner-title">Happy Hunter Smart Marketing</h1>
             <p className="banner-desc">
               "Architecting digital dominance for ambitious South African entities."
-              Your command center for autonomous AI research agents, verified lead extraction, and multi-channel marketing automation.
+              Your command center for autonomous AI research agents, business audits, and multi-channel marketing automation.
             </p>
           </div>
           <div className="banner-stats">
@@ -91,10 +91,10 @@ export default function DashboardHome() {
               </div>
               <span className="status-badge live">Live Tool</span>
             </div>
-            <h3 className="tool-name">Google Maps Lead Scraper</h3>
+            <h3 className="tool-name">Google Maps Business Auditor</h3>
             <p className="tool-desc">
-              Extract high-intent business leads, emails, social links, and reviews directly from Google Maps
-              with up to 50+ data points per business.
+              Audit your own Google Maps listing — verify name, category, address, phone, website, and ratings.
+              50+ data fields to find and fix red flags.
             </p>
             <div className="tool-footer">
               <div className="tool-tags">
@@ -102,7 +102,7 @@ export default function DashboardHome() {
                 <span className="tag">50+ Fields</span>
               </div>
               <Link href="/dashboard/gmaps-scraper" className="tool-btn btn-secondary" id="index-gmaps-btn">
-                Start Scraping →
+                Run Audit →
               </Link>
             </div>
           </div>

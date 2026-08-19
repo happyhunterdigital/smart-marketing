@@ -122,10 +122,10 @@ export default function LandingPage() {
           <div className="feature-card">
             <div className="card-badge live">Live Tool</div>
             <div className="card-icon gold-bg">📍</div>
-            <h3 className="card-title">Google Maps Lead Scraper</h3>
+            <h3 className="card-title">Google Maps Business Auditor</h3>
             <p className="card-desc">
-              Extract high-intent local business leads, verified contact details, email addresses,
-              decision-makers, and customer reviews with 50+ rich data fields.
+              Audit your own business listing — verify name, category, address, phone, website, and ratings.
+              50+ data fields to find and fix red flags before customers do.
             </p>
             <div className="card-tags">
               <span>Botasaurus</span>
@@ -176,7 +176,7 @@ export default function LandingPage() {
         <div className="footer-links">
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/dashboard/crm">CRM</Link>
-          <Link href="/dashboard/gmaps-scraper">Scraper</Link>
+          <Link href="/dashboard/gmaps-scraper">Audit</Link>
           <Link href="/dashboard/billing">Pricing</Link>
         </div>
       </footer>

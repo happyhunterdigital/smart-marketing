@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             className={`nav-item ${currentPath.startsWith('/dashboard/gmaps-scraper') ? 'active' : ''}`}
           >
             <span className="nav-icon">{Icons.maps}</span>
-            <span>Maps Scraper</span>
+            <span>Business Auditor</span>
           </Link>
 
           <Link
@@ -251,7 +251,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <span className="bc-current">
               {currentPath === '/dashboard' ? 'Overview' :
                currentPath.startsWith('/dashboard/crm') ? 'Happy Hunter CRM' :
-               currentPath.startsWith('/dashboard/gmaps-scraper') ? 'Maps Scraper' :
+               currentPath.startsWith('/dashboard/gmaps-scraper') ? 'Business Auditor' :
                currentPath.startsWith('/dashboard/jobs') ? 'Jobs' :
                currentPath.startsWith('/dashboard/billing') ? 'Billing' : 'Dashboard'}
             </span>

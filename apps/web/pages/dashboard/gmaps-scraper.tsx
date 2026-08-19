@@ -101,7 +101,7 @@ export default function GmapsScraper() {
         });
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred while creating extraction job.');
+      setError(err instanceof Error ? err.message : 'An error occurred while starting the audit.');
     } finally {
       setIsSubmitting(false);
     }
@@ -112,10 +112,10 @@ export default function GmapsScraper() {
       <div className="scraper-page">
         <div className="page-header">
           <div>
-            <div className="category-tag">DATA SOVEREIGNTY · LEAD EXTRACTION</div>
-            <h1 className="page-title">Google Maps Lead Scraper</h1>
+            <div className="category-tag">ENTITY AUDIT · BUSINESS VERIFICATION</div>
+            <h1 className="page-title">Google Maps Business Auditor</h1>
             <p className="page-subtitle">
-              Extract high-intent local business leads, verified contacts, ratings, and social profiles with mathematical certainty.
+              Audit your own business listing — verify your official name, category, address, click-to-call phone, website, and ratings.
             </p>
           </div>
           <a
@@ -136,15 +136,15 @@ export default function GmapsScraper() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="e.g., Solar installers in Johannesburg or Real estate agencies in Cape Town"
+                placeholder="e.g., Happy Hunter Digital in Pretoria or Your Business Name in Your City"
                 required
               />
-              <span className="field-hint">Specify location and business sector for optimal entity matching.</span>
+              <span className="field-hint">Search your exact business name and city for a precise audit.</span>
             </div>
 
             <div className="form-row">
               <div className="form-group flex-1">
-                <label>Extraction Strategy</label>
+                <label>Audit Strategy</label>
                 <select value={strategy} onChange={(e) => setStrategy(e.target.value as any)}>
                   <option value="Fast">Fast (Default) — 120–1,600 results per city (1–10 min)</option>
                   <option value="Fastest">Fastest — ~30s per city, speed priority</option>
@@ -183,7 +183,7 @@ export default function GmapsScraper() {
             )}
 
             <button type="submit" disabled={isSubmitting} className="submit-btn">
-              {isSubmitting ? 'Architecting Extraction Job...' : '🚀 Start Google Maps Scraping Job'}
+              {isSubmitting ? 'Running Audit...' : 'Start Business Audit'}
             </button>
           </form>
 
@@ -198,7 +198,7 @@ export default function GmapsScraper() {
               <h3>Job Created Successfully!</h3>
               <p><strong>Job ID:</strong> {result.jobId}</p>
               <p>
-                Your extraction is queued in background workers. Monitor progress in{' '}
+                Your audit is queued in background workers. Monitor progress in{' '}
                 <a href="/dashboard/jobs">My Jobs Center →</a>
               </p>
             </div>
