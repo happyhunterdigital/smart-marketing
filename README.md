@@ -7,7 +7,7 @@ A collection of self-hosted marketing tools for automated lead generation, custo
 ## Tools
 
 - **Happy Hunter CRM** - Agentic-first CRM designed for AI agents ([happyhunterdigital/crm](https://github.com/happyhunterdigital/crm))
-- **Google Maps Scraper** - Extract business leads from Google Maps ([happyhunterdigital/google-maps-scraper](https://github.com/happyhunterdigital/google-maps-scraper))
+- **Google Maps Business Auditor** - Audit your own or a client's Google Maps listing: name, category, address, phone, website, and ratings ([happyhunterdigital/google-maps-scraper](https://github.com/happyhunterdigital/google-maps-scraper))
 - **OpenReply** - Instagram comment-to-DM automation
 - **OpenWA** - Self-hosted WhatsApp API gateway
 - **Social Analyzer** - OSINT username search across social networks
@@ -24,7 +24,7 @@ smart-marketing/
 │       ├── pages/
 │       │   ├── dashboard/
 │       │   │   ├── crm.tsx            # Happy Hunter CRM Control Center
-│       │   │   ├── gmaps-scraper.tsx  # Google Maps Lead Extraction
+│   │   │   ├── gmaps-scraper.tsx  # Google Maps Listing Audit
 │       │   │   ├── index.tsx          # Master Platform Dashboard
 │       │   │   ├── jobs.tsx           # Background Jobs Tracking
 │       │   │   └── billing.tsx        # Subscriptions & Billing
@@ -97,7 +97,7 @@ Visit `http://localhost:3000` to access the dashboard.
 The dashboard currently supports:
 - `/dashboard` - Overview of all integrated marketing & lead generation tools
 - `/dashboard/crm` - Happy Hunter CRM agent status, pipeline sync & research dispatch
-- `/dashboard/gmaps-scraper` - Google Maps lead extraction
+- `/dashboard/gmaps-scraper` - Google Maps listing audit (business identity, contact, ratings)
 - `/dashboard/jobs` - View and track asynchronous background jobs
 - `/dashboard/billing` - Pricing and subscription management
 

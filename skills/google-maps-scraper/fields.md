@@ -1,89 +1,81 @@
-# Extracted Data Fields
+# Data Fields — What an Audit Reads
 
-Every business the tool finds comes back as a record with up to 50+ fields. Below is the complete list, grouped by what the data is for.
+Every business the tool finds comes back as a record with up to 50+ fields. An audit reads **three groups** of fields. The rest are useful context.
 
 > **The one field to remember: KGMID.** It is the unique ID for each business and is always present. `PLACE_ID` can occasionally be missing, so use KGMID when you need to tell records apart.
 
 ---
 
-## Core identity
+## Audit group 1 — Business identity
 
-Used to identify the business and understand what it does.
+Does Google know who you are? These fields answer that question.
+
+| Field | What it means | Audit question it answers |
+| --- | --- | --- |
+| `NAME` | The business name as Google shows it. | Is my official name spelled exactly right? |
+| `MAIN_CATEGORY` | The primary category, e.g. "Restaurant". | Is my primary trade category correct? |
+| `CATEGORIES` | All categories the business is filed under. | Am I filed under the right categories? |
+| `ADDRESS` | Street address. | Is my physical address correct? |
+| `DETAILED_ADDRESS` | Fuller address including neighbourhood and postcode. | Is my full address right? |
+| `COORDINATES` | Latitude and longitude. | Am I pinned at the right spot on the map? |
+| `PLUS_CODE` | Open Location Code for the address. | |
+| `SERVICE-AREA` (geolocation search) | The boundary you drew for a service-area business. | Is my designated service-area boundary correct? |
+| `STATUS` | Listing status. | Is my listing active and live? |
+
+**Red flag:** a wrong `NAME`, a missing `ADDRESS`, or an incorrect `MAIN_CATEGORY` is exactly the confusion that keeps AI answers from recommending you.
+
+## Audit group 2 — Core contact points
+
+Can a customer actually reach you? These fields answer that.
+
+| Field | What it means | Audit question it answers |
+| --- | --- | --- |
+| `PHONE` | Local phone number, click-to-call on mobile. | Can a customer tap my number and call me? |
+| `PHONE_INTERNATIONAL` | Phone number with country code. | Does my number include the right country code? |
+| `WEBSITE` | The business website. | Is my website linked and working? |
+
+**Red flag:** a missing `PHONE` or `WEBSITE` means customers cannot click to reach you — and Google has less proof the business is real.
+
+## Audit group 3 — Ratings
+
+Do customers prove you are real and trusted? These fields answer that.
+
+| Field | What it means | Audit question it answers |
+| --- | --- | --- |
+| `RATING` | Average star rating. | What does my public rating look like? |
+| `REVIEWS` | Total number of reviews. | How much social proof do I have? |
+| `REVIEWS_PER_RATING` | How many reviews at each star level. | Where are my reviews concentrated? |
+| `REVIEWS_LINK` | Link to the reviews page. | |
+| `REVIEW_KEYWORDS` | Common words customers use in reviews. | What do customers actually say about me? |
+| `FEATURED_REVIEWS` | Reviews Google highlights on the profile. | What is the first thing people read? |
+| `FEATURED_QUESTION` | A question the business answered publicly. | |
+
+**Red flag:** an empty or weak review profile is the most common reason AI and customers skip a business.
+
+---
+
+## Useful context fields (not part of the core audit)
+
+### Social media
 
 | Field | What it means |
 | --- | --- |
-| `PLACE_ID` | Google's internal ID. Usually present, sometimes missing. |
-| `KGMID` | Knowledge Graph Machine ID. Always present and unique — use this as the record ID. |
-| `CID` | Google's customer ID for the business. |
-| `DATA_ID` | Another Google reference ID. |
-| `NAME` | Business name. |
-| `DESCRIPTION` | What Google writes about the business. |
-| `LINK` | Direct Google Maps link to the business. |
-| `MAIN_CATEGORY` | The primary category, e.g. "Restaurant". |
-| `CATEGORIES` | All categories the business is filed under. |
+| `LINKEDIN`, `TWITTER`, `FACEBOOK` | Social profiles. |
+| `YOUTUBE`, `INSTAGRAM`, `PINTEREST` | Social profiles. |
+| `GITHUB`, `SNAPCHAT`, `TIKTOK` | Social profiles. |
 
-## Contact information
-
-Everything you need to reach out.
-
-| Field | What it means |
-| --- | --- |
-| `WEBSITE` | The business website. |
-| `PHONE` | Local phone number. |
-| `PHONE_INTERNATIONAL` | Phone number with country code. |
-| `ADDRESS` | Street address. |
-| `DETAILED_ADDRESS` | Fuller address including neighbourhood and postcode. |
-| `COORDINATES` | Latitude and longitude. |
-| `PLUS_CODE` | Open Location Code for the address. |
-| `TIME_ZONE` | The business's time zone. |
-
-## Ratings and reviews
-
-Useful for qualifying leads — a strong rating often means an active, well-run business.
-
-| Field | What it means |
-| --- | --- |
-| `RATING` | Average star rating. |
-| `REVIEWS` | Total number of reviews. |
-| `REVIEWS_PER_RATING` | How many reviews at each star level. |
-| `REVIEWS_LINK` | Link to the reviews page. |
-| `REVIEW_KEYWORDS` | Common words customers use in reviews. |
-| `FEATURED_REVIEWS` | Reviews Google highlights on the profile. |
-| `FEATURED_QUESTION` | A question the business answered publicly. |
-
-## Social media
-
-Where the business is active online, and where they may be a better lead for a social or web service.
-
-| Field | What it means |
-| --- | --- |
-| `LINKEDIN` | LinkedIn profile. |
-| `TWITTER` | Twitter / X profile. |
-| `FACEBOOK` | Facebook page. |
-| `YOUTUBE` | YouTube channel. |
-| `INSTAGRAM` | Instagram profile. |
-| `PINTEREST` | Pinterest profile. |
-| `GITHUB` | GitHub profile. |
-| `SNAPCHAT` | Snapchat account. |
-| `TIKTOK` | TikTok account. |
-
-## Ownership and listing status
-
-Signals whether a business is worth pursuing — and how urgently.
+### Ownership and listing status
 
 | Field | What it means |
 | --- | --- |
 | `OWNER` | Business owner name, where Google has it. |
 | `OWNER_POSTS` | Updates posted by the owner. |
-| `CAN_CLAIM` | Whether the listing is unclaimed (a common lead signal). |
+| `CAN_CLAIM` | Whether the listing is unclaimed. **If true, the listing needs to be claimed — no one is controlling what Google shows.** |
 | `IS_SPENDING_ON_ADS` | Whether the business runs Google Ads. |
-| `STATUS` | Listing status. |
 | `IS_TEMPORARILY_CLOSED` | Whether the business is temporarily closed. |
 | `IS_PERMANENTLY_CLOSED` | Whether the business is permanently closed. |
 
-## Media and visuals
-
-A picture of how established the business is.
+### Media and visuals
 
 | Field | What it means |
 | --- | --- |
@@ -92,7 +84,7 @@ A picture of how established the business is.
 | `IMAGE_COUNT` | Total number of photos. |
 | `IMAGES` | Links to the photos. |
 
-## Hours and busy times
+### Hours and busy times
 
 | Field | What it means |
 | --- | --- |
@@ -102,9 +94,7 @@ A picture of how established the business is.
 | `POPULAR_TIMES` | When customers visit, by hour. |
 | `MOST_POPULAR_TIMES` | The busiest hours. |
 
-## Services and ordering
-
-More useful context for restaurants and similar businesses.
+### Services and ordering
 
 | Field | What it means |
 | --- | --- |
@@ -113,16 +103,20 @@ More useful context for restaurants and similar businesses.
 | `ORDER_ONLINE_LINKS` | Links to order online. |
 | `PRICE_RANGE` | Cost level, e.g. $, $$, $$$. |
 
-## Additional details
+### Additional details
 
 | Field | What it means |
 | --- | --- |
+| `DESCRIPTION` | What Google writes about the business. |
+| `LINK` | Direct Google Maps link to the business. |
+| `PLACE_ID`, `CID`, `DATA_ID`, `KGMID` | Google's internal IDs for the record. |
 | `ABOUT` | About section on the profile. |
 | `ON_SITE_PLACES` | Other places listed on the same site. |
 | `GAS_PRICES` | Fuel prices (for petrol stations). |
 | `CUSTOMER_UPDATES` | Updates the business posts to customers. |
 | `COMPETITORS` | Competing businesses shown by Google. |
 | `LOCATION_SUMMARY` | Short summary of the location. |
+| `TIME_ZONE` | The business's time zone. |
 
 ---
 

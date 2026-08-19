@@ -1,66 +1,83 @@
-# Happy Hunter Digital — Google Maps Lead Extractor
+# Happy Hunter Digital — Google Maps Business Auditor
 
-The one tool that turns Google Maps into a list of businesses you can sell to.
+Audit your own business the way Google sees it.
 
-Type in any business type and any location — restaurants in Johannesburg, gyms in Cape Town, dentists in Durban — and the app pulls a clean, exportable list of businesses with their phone number, website, address, rating, and reviews. Every row is a potential customer.
+Type in your business name and your city, and the app pulls your listing back from Google Maps with everything that decides whether customers — and AI — can find and trust you: your official name, trade category, street address (or service-area boundary), a click-to-call phone number, a link to your website, and your ratings.
 
 This is a rebranded fork of the popular `omkarcloud/google-maps-scraper` desktop app, run and supported by **Happy Hunter Digital**. All copy follows the Happy Hunter brand voice and scheme — see [BRAND.md](../../BRAND.md).
 
-## What you get
+## What an audit checks
 
-- **50+ data fields** extracted in real time for every business.
-- **Phone, website, address, rating, and review count** straight out of the box.
-- **Email and social profiles** added with one click via enrichment.
-- **Reviews extraction** that actually works.
-- **Built-in API** for Python and Node.js, so you can feed leads straight into your own systems.
-- **Run it on a server** (AWS/GCP) for always-on scraping.
+**1. Business identity**
+- Your official business name
+- Your primary trade category
+- Your physical street address — or your designated service-area boundary if you work across an area
 
-## The free plan is the real deal
+**2. Core contact points**
+- A direct, click-to-call phone number
+- A link to your website
 
-- **200 searches per month, free.** No credit card.
-- One search returns **100 to 1,000+ businesses** (10,000+ with Zoom 18).
-- That is roughly **20,000+ free leads every month** — about 16x the free allowance of bigger-name competitors.
+**3. Ratings**
+- Your average star rating
+- Your review count
+- What customers say about you
 
-## How to start
+## Why this matters
+
+In 2026, Google does not just rank pages. It builds a knowledge graph of who you are, what you sell, where you are, and how to reach you. AI answers pull from that graph.
+
+If your name is misspelled, your category is wrong, your address is off, or your phone and website are missing — the AI sees confusion. A confused AI will not recommend you. The audit shows you exactly what Google currently believes about your business, so you can fix it.
+
+## The three audit questions
+
+1. **Does Google know my official name and category?**
+2. **Can a customer click to call me or open my website?**
+3. **Do I have a rating that proves I am real and trusted?**
+
+If the answer to any is no, the listing needs work. Claim it, correct the details, and grow reviews.
+
+## How to run an audit
 
 1. Install **Google Chrome**.
 2. Download the app for your operating system from [omkar.cloud](https://www.omkar.cloud/tools/google-maps-extractor).
-3. Type what you want, and where. Press **Search**.
-4. Watch results stream in, filter until the list is exactly your target customers, then **Export** as CSV, JSON, or Excel.
+3. Type your business name and city, e.g. `happy hunter digital in Pretoria`. Press **Search**.
+4. Find your listing in the results. Export it as CSV, JSON, or Excel.
+5. Read the record against the three audit questions.
 
 ## Pricing in plain English
 
 | Plan | Price | What you get |
 | --- | --- | --- |
-| **Free** | $0 | 200 searches/month — enough for your first 20,000+ leads |
-| **Starter** | $16/month | 5,000 searches/month — regular outreach, city after city |
-| **Unlimited** | $48/month | Unlimited searches — agencies pulling country-level data |
+| **Free** | $0 | 200 searches/month — enough to audit your own business for years |
+| **Starter** | $16/month | 5,000 searches/month — agencies auditing many client listings |
+| **Unlimited** | $48/month | Unlimited searches — country-level data and heavy use |
 
-Each search is a location and category combo, and every search returns 100 to 1,000+ businesses. Other tools charge per result; this tool charges per search. That keeps the cost per lead the lowest in the market.
+One audit of one listing uses a single search. You will rarely need more than the free plan.
 
-Cancel anytime. Refeunds are two clicks, no questions asked, within the guarantee window.
+Cancel anytime. Refunds are two clicks, no questions asked, within the guarantee window.
 
 ## Who it is for
 
-- **Founders** hunting their first customers.
-- **Agencies** building lead lists for clients.
-- **Freelancers** (web builders, SEO, social) pitching local businesses.
-- **Students and researchers** gathering clean business data.
+- **Business owners** auditing their own listing.
+- **Agencies** running audits on client listings before pitching fixes.
+- **Freelancers** (web builders, SEO, social) proving a prospect's gaps before selling.
+- **Anyone** verifying a business before dealing with it.
 
 ## Common questions
 
 - **Do I need to code?** No. The desktop app is point-and-click. Coding only matters if you want to use the API.
 - **Is my computer enough?** You need Google Chrome and a stable internet connection. The computer must stay awake while a search runs.
-- **What about emails?** Google Maps does not show emails. The built-in enrichment finds and verifies them for you.
+- **Will I see my competitors too?** The search can return other businesses in your area. Pick your exact listing by name from the results — see `advanced.md` for finding your record.
+- **What if I run a service business with no street address?** Use the geolocation search to draw your service-area boundary — the tool records it exactly.
 - **Can it run all night?** Yes. You can also deploy it to a cloud server so it never needs your laptop.
 
 ## Learn more
 
-- `fields.md` — every data field the tool extracts, and what it is useful for
-- `advanced.md` — search strategies, filters, and troubleshooting
-- `server-deployment.md` — run the scraper on a cloud server
-- `video-script.md` — a ready-to-film marketing script about the tool
+- `fields.md` — every data field the tool extracts, and what it means for an audit
+- `advanced.md` — running the audit, finding your listing, and troubleshooting
+- `server-deployment.md` — run the auditor on a cloud server
+- `video-script.md` — a ready-to-film marketing script about the audit
 
 ## Ethos
 
-Every business on Google Maps is already telling you who they are, where they are, and how to reach them. This tool simply collects that in minutes instead of weeks. Happy hunting.
+Your business already tells Google who you are, where you are, and how to reach you. This tool shows you what Google heard. If what it heard is wrong, now you know exactly what to fix. Happy hunting.

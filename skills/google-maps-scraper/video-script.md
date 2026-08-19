@@ -1,127 +1,110 @@
-# Video Script — "10,000 Leads From Google Maps For Free"
+# Video Script — "Is Your Business A Ghost To Google?"
 
 A ready-to-film marketing script for Happy Hunter Digital content. **SAY** = what the presenter says word-for-word. **SHOW** = what is on screen.
 
-**Target length:** 4–5 minutes.
+**Target length:** 3–4 minutes.
 
 **Title options (for clicks):**
-1. 10,000 Leads From Google Maps For Free (Live Proof)
-2. The Free Tool That Puts The Whole City In Your Sales Pipeline
-3. Agencies Charge R16,000+ For This List. Build It For Free.
+1. Is Your Business Invisible To Google AI? (30-Second Check)
+2. Audit Your Own Google Listing — What Google Actually Shows About You
+3. Your Customers Can't Find You Because Of This One Listing
 
 ---
 
-## 1. COLD OPEN — proof first (0:00–0:15)
+## 1. COLD OPEN — the hook (0:00–0:15)
 
-**SAY:** This is a list of ten thousand restaurants in Johannesburg. Name, phone number, website, rating, address — everything. It took twenty minutes to build, and it cost zero rand.
+**SAY:** Your business already exists. But to Google, it might as well be a ghost. In 30 seconds I will show you exactly what Google — and its AI — currently believes about your business. And if it is wrong, you are losing customers without knowing why.
 
-**SHOW:** Fast scroll through the finished spreadsheet. Zoom in on the row counter: `10,047`.
+**SHOW:** Search bar on screen, typing the business name. Quick cut to a Google Maps listing appearing.
 
-**SAY:** Lead sellers charge a fortune for a list this size. Today you will build it yourself for free — and stay to the end, because I will also show you how to get the **email address for every single lead**. Still free.
-
-**SHOW:** Pricing page of a lead vendor with a big red X, and the text: `R16,000+ → R0`.
-
-> Retention: result shown before anything else. The email promise is the open loop that keeps people watching.
+> Retention: a personal stake in the first 15 seconds. Everyone wants to know what Google says about them.
 
 ---
 
-## 2. THE TOOL — 8 seconds of credibility (0:15–0:30)
+## 2. THE PROBLEM — why it matters (0:15–0:40)
 
-**SAY:** I am using a proven, trusted Google Maps extractor
- — it is free, well-reviewed, and the whole process is three steps. Watch.
+**SAY:** Google does not rank websites anymore. It builds a knowledge graph — who you are, what you sell, where you are, how to reach you. It cross-checks that against your website, your reviews, and your social profiles. Then it builds a trust score.
 
-**SHOW:** Quick cuts, 1–2 seconds each: app page, rating widget, Trustpilot "Excellent" badge.
+**SAY:** If your name is misspelled, your category is wrong, your address is off, or your phone and website are missing — the AI sees confusion. And a confused AI does not recommend you.
 
-> Don't linger on credibility. More than ten seconds feels like an ad.
-
----
-
-## 3. LIVE DEMO — setup (0:30–1:05)
-
-**SAY:** Step one — install it. Link in the description.
-
-**SAY:** Step two — type what you want and where. I am typing **restaurants in Johannesburg**. You could type gyms in Cape Town, dentists in Durban, or tech companies in Pretoria. Anything on Google Maps can become a lead list.
-
-**SAY:** Step three — press **Search**. That is the whole skill.
-
-**SHOW:** Typing → click **Search** → first results streaming in live.
-
-> Show rows appearing within seconds of the click.
+**SHOW:** Simple diagram — one line pointing from "Google Knowledge Graph" to "Your Business" breaking in the middle. "Confusion = invisible."
 
 ---
 
-## 4. THE WAIT — never show a loading bar (1:05–1:50)
+## 3. THE AUDIT — three questions (0:40–1:30)
 
-**SAY:** Ten thousand leads takes about twenty minutes. While it runs, here is the feature that actually makes you money — **filters**.
+**SAY:** So here is the audit. I am using the free Google Maps auditor from Happy Hunter Digital. Three questions, straight from your live listing.
 
-**SAY:** Cold calling? Filter to businesses **with** phone numbers. Selling websites? Filter to businesses **without** a website — every one of those is a client waiting to happen. Want serious buyers? Minimum four stars and fifty-plus reviews. You sort until the list is exactly your customer.
+**SAY:** Question one — business identity. Does Google know your official name, your trade category, and your physical address? Or your service-area boundary if you work across an area?
 
-**SHOW:** Filter panel — toggle "has phone", "no website", rating slider.
+**SHOW:** The record on screen, highlighting `NAME`, `MAIN_CATEGORY`, `ADDRESS`.
 
-> This fills dead time with the strongest selling point: the tool thinks like a salesperson.
+**SAY:** Question two — contact points. Can a customer tap your number and call you right now? Is your website linked and working?
 
----
+**SHOW:** Highlighting `PHONE` and `WEBSITE` on the record.
 
-## 5. THE PAYOFF (1:50–2:30)
+**SAY:** Question three — ratings. Do you have reviews proving you are real and trusted?
 
-**SAY:** Twenty minutes later — done. Ten thousand and twenty-four restaurants.
+**SHOW:** Highlighting `RATING` and `REVIEWS`.
 
-**SHOW:** Clock spins → results table → zoom the count.
-
-**SAY:** Phone numbers, websites, addresses, ratings, review counts. Look at this.
-
-**SHOW:** Slow scroll across columns. Let the data breathe.
-
-**SAY:** One click — **Export as CSV** — and it opens in Excel or Google Sheets. This list is ready for cold calls today.
-
-**SHOW:** Click Export → CSV opens in sheets.
+> Three clear beats. Each one is a question the viewer asks about their own business.
 
 ---
 
-## 6. PRICING — after they have seen the value (2:30–3:15)
+## 4. THE PAYOFF — what you get (1:30–2:00)
 
-**SAY:** So what does this cost? This is the part nobody believes.
+**SAY:** Hit export. One CSV row. That is your whole listing, exactly as Google sees it.
 
-**SAY:** The free plan gives you **200 searches**. One search just got me ten thousand businesses. Do the maths — that is room for over **a hundred thousand leads**, on the free plan. A big vendor charges a fortune for that. Here, it is free.
+**SHOW:** Export animation → the row opens in a spreadsheet, three groups highlighted.
 
-**SHOW:** Text stacking: `200 free searches` → `1 search = 10K+ leads` → `100K+ leads for free`.
+**SAY:** Now you know, with total certainty, whether the gaps are in your name, your address, your phone, your website, or your reviews. That is not guesswork. That is the audit.
 
-**SAY:** So honestly — most of you should never pay. The free plan is all you will ever need.
-
-> "You should never pay" is the biggest trust moment in the video. Keep it word-for-word.
-
-**SAY:** If you are an agency that burns through 200 searches, sixteen dollars (or about R300) gets you five thousand searches, and forty-eight dollars gets you unlimited. That is the whole pricing page.
-
-**SHOW:** `$16 → 5,000 searches` / `$48 → Unlimited`.
+**SHOW:** Slow scroll across the exported columns.
 
 ---
 
-## 7. THE PROMISED PAYOFF — emails (3:15–3:45)
+## 5. WHAT TO DO WITH IT — the fix (2:00–2:40)
 
-**SAY:** Now the thing I promised. Outreach needs emails — and Google Maps does not show them. So use the built-in enrichment: it takes your list and finds the email addresses. Free.
+**SAY:** Most listing problems are fixable in a day.
 
-**SHOW:** Flash → run enrichment → email column filling in, row by row.
+**SHOW:** "Fix" list on screen, checked off one by one:
 
-> Closes the loop from the hook. Make this moment visually satisfying.
+- **Claim the listing** — if nobody owns it, nobody controls what Google shows.
+- **Correct your NAP** — name, address, phone — to match your registered details.
+- **Add your phone and website** — click-to-call and a working link.
+- **Fix your category** to your real trade.
+- **Get reviews** — real ones, from real customers.
+
+**SAY:** Fix those, and the confusion becomes clarity. And clear businesses get recommended — by customers and by AI.
 
 ---
 
-## 8. END — bridge, don't beg (3:45–4:05)
+## 6. THE OFFER (2:40–3:10)
 
-**SAY:** You now know how to pull more leads in twenty minutes than most agencies buy in a year. In the next video, I show the exact search strategy — how to choose keywords, stack filters, and export a clean, ready-to-sell list. Ten minutes, and you will squeeze every last lead out of this tool. It is on your screen right now.
+**SAY:** The auditor is free — 200 searches a month, which is years' worth of audits for your own business. Link in the description.
 
-**SHOW:** End screen with next-video card. Hard cut — no long outro.
+**SAY:** And if you want the full forensic treatment — your website, your socials, your competitors, your AI presence — that is what Happy Hunter Digital does. Free entity audit, link below.
 
-> No "like and subscribe" speech — it kills retention and the algorithm reads the drop. Send them to the next video instead.
+**SHOW:** CTA card: "Free Google Maps Audit" → "Book my audit".
+
+---
+
+## 7. END — bridge, don't beg (3:10–3:40)
+
+**SAY:** The actor's motto is know your lines. For a local business, it is know your listing. Run the audit, find the gap, fix it — then watch who starts finding you.
+
+**SHOW:** End screen with "Book my free audit" card. Hard cut.
+
+> No "like and subscribe" speech. Send them to the audit — that is the action.
 
 ---
 
 ## Why this script works
 
-1. **Proof before promise** — the finished list is frame one.
-2. **Price anchor early** (R16,000+) so "free" has weight the whole video.
-3. **Open loop in the hook** (free emails) — resolved only at the end.
-4. **Never show real-time waiting** — the twenty-minute gap is filled with filters (value plus soft pitch).
-5. **Pricing only after the payoff** — they have already seen 10K leads, so free feels unbelievable and the paid tiers feel trivial.
-6. **Trust spike** — "most of you should never pay me."
-7. **End bridges to the next video** — no outro, no begging.
+1. **Personal stake in the hook** — everyone asks "what does Google say about me" in the first 15 seconds.
+2. **Problem framed as a trust score** — a concept AI answers actually run on.
+3. **Three clean audit questions** — identity, contact, ratings; easy to remember and repeat.
+4. **Payoff is a document** — an exported record the viewer can literally read.
+5. **Fix sells the service** — the clincher is not the tool, it is knowing exactly what to fix.
+6. **Free tier first** — trust before offer; then the agency service as an optional next step.
+7. **Bridge, not beg** — ends on the audit action, the whole point of the video.

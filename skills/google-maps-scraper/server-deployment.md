@@ -1,8 +1,8 @@
-# Deploy the Lead Extractor to a Cloud Server
+# Deploy the Google Maps Business Auditor to a Cloud Server
 
-Run the scraper on a cloud server instead of your laptop. It then scrapes day and night — no screen, no sleep issues. This guide uses AWS EC2 as the example; the same steps work on Google Cloud, Azure, or DigitalOcean. You need a Debian- or Ubuntu-based virtual machine.
+Run the auditor on a cloud server instead of your laptop. It then audits day and night — no screen, no sleep issues. Useful if you want a scheduled, unattended check of your listing every month, or you run audits for many clients. This guide uses AWS EC2 as the example; the same steps work on Google Cloud, Azure, or DigitalOcean. You need a Debian- or Ubuntu-based virtual machine.
 
-The result is an **API** your own code can call, plus a browser URL to control the scraper.
+The result is an **API** your own code can call, plus a browser URL to control the auditor.
 
 ---
 
@@ -99,6 +99,6 @@ That is it — no further charges. The static IP is the sneaky cost people forge
 ## Cloud provider notes
 
 - **Google Cloud / Azure / DigitalOcean:** identical flow — create a Debian/Ubuntu VM, allow SSH/HTTP/HTTPS, run the two install commands, keep the machine running.
-- **Machine size:** `t3.medium` handles typical use. If you scrape at zoom 18 or country scale for long stretches, step up to a larger instance.
+- **Machine size:** `t3.medium` handles typical use. If you audit at zoom 18 or run country-scale checks for long stretches, step up to a larger instance.
 
 Happy hunting, from Happy Hunter Digital.
