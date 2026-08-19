@@ -139,10 +139,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Brand header — wordmark per BRAND.md §2 */}
         <div className="brand-header">
           <div className="brand-emblem">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M12 3L3 8v8l9 5 9-5V8L12 3z" fill="#050505" stroke="#050505" strokeWidth="1" />
-              <path d="M12 3L3 8l9 5 9-5-9-5z" fill="#050505" />
-            </svg>
+            <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1780206015/favicon_jafn1r.jpg" alt="Happy Hunter Digital" width="20" height="20" style={{ borderRadius: '4px' }} />
           </div>
           <div className="brand-wordmark">
             {/* Wordmark: happy (white) + hunter (amber) + digital (gray) per BRAND.md §2 */}
@@ -328,13 +325,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         .brand-emblem {
           width: 34px;
           height: 34px;
-          background: #f59e0b;
           border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
           flex-shrink: 0;
+          overflow: hidden;
         }
 
         .brand-wordmark {

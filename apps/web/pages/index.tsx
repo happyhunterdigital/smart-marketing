@@ -26,7 +26,7 @@ export default function LandingPage() {
       <nav className="top-navbar">
         <div className="nav-brand">
           <div className="brand-logo">
-            <span className="logo-symbol">🧠</span>
+            <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1780206015/favicon_jafn1r.jpg" alt="Happy Hunter Digital" width="24" height="24" style={{ borderRadius: '6px' }} />
           </div>
           <div className="brand-text">
             <span className="brand-name">HAPPY HUNTER DIGITAL</span>
