@@ -5,8 +5,7 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 export default function GmapsScraper() {
   const [query, setQuery] = useState('');
-  const [strategy, setStrategy] = useState<'Fast' | 'Fastest' | 'Detailed' | 'Zoom15' | 'Zoom16' | 'Zoom17' | 'Zoom18' | 'Geolocation'>('Fast');
-  const [maxResults, setMaxResults] = useState('1000');
+  const [strategy, setStrategy] = useState<'Basic' | 'Moderate' | 'Deep'>('Basic');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState('');
@@ -39,7 +38,7 @@ export default function GmapsScraper() {
           body: JSON.stringify({
             query,
             strategy,
-            maxResults: parseInt(maxResults),
+            maxResults: strategy === 'Basic' ? 50 : strategy === 'Moderate' ? 500 : 5000,
           }),
         });
 
@@ -83,7 +82,7 @@ export default function GmapsScraper() {
           tool: 'google-maps-scraper',
           query: query,
           strategy: strategy,
-          maxResults: parseInt(maxResults),
+          maxResults: strategy === 'Basic' ? 50 : strategy === 'Moderate' ? 500 : 5000,
           status: 'pending',
           createdAt: timestamp,
           resultUrl: null,
@@ -144,40 +143,34 @@ export default function GmapsScraper() {
 
             <div className="form-row">
               <div className="form-group flex-1">
-                <label>Audit Strategy</label>
+                <label>Audit Depth</label>
                 <select value={strategy} onChange={(e) => setStrategy(e.target.value as any)}>
-                  <option value="Fast">Fast (Default) — 120–1,600 results per city (1–10 min)</option>
-                  <option value="Fastest">Fastest — ~30s per city, speed priority</option>
-                  <option value="Detailed">Detailed — Highest coverage per single city</option>
-                  <option value="Zoom15">Zoom Level 15 — Neighborhood Level</option>
-                  <option value="Zoom16">Zoom Level 16 — Sub-Neighborhood Level</option>
-                  <option value="Zoom17">Zoom Level 17 — Block Level (Deep Search)</option>
-                  <option value="Zoom18">Zoom Level 18 — Street Level (Maximum Depth)</option>
-                  <option value="Geolocation">Geolocation — Custom GeoJSON Polygon Area</option>
+                  <option value="Basic">Basic — Free · 50 results · Core fields (~30s)</option>
+                  <option value="Moderate">Moderate — R5 · 500 results · Extended fields (~2–3 min)</option>
+                  <option value="Deep">Deep Search — R15 · 5,000 results · All 50+ fields (~5–10 min)</option>
                 </select>
               </div>
 
               <div className="form-group width-220">
-                <label>Max Results Limit</label>
+                <label>Max Results</label>
                 <input
-                  type="number"
-                  value={maxResults}
-                  onChange={(e) => setMaxResults(e.target.value)}
-                  min="1"
-                  max="50000"
-                  required
+                  type="text"
+                  value={strategy === 'Basic' ? '50' : strategy === 'Moderate' ? '500' : '5,000'}
+                  disabled
+                  className="disabled-input"
                 />
+                <span className="field-hint">
+                  {strategy === 'Basic' ? 'Included free with Basic tier.' :
+                   strategy === 'Moderate' ? 'Included with Moderate tier (R5).' :
+                   'Included with Deep Search tier (R15).'}
+                </span>
               </div>
             </div>
 
-            {strategy === 'Geolocation' && (
+            {strategy === 'Deep' && (
               <div className="info-box">
                 <p>
-                  Draw your search area polygon at{' '}
-                  <a href="https://geojson.io/" target="_blank" rel="noopener noreferrer">
-                    geojson.io
-                  </a>{' '}
-                  and specify custom boundaries.
+                  Deep Search runs a full sweep across multiple zoom levels and boundary passes for maximum coverage.
                 </p>
               </div>
             )}
@@ -312,6 +305,11 @@ export default function GmapsScraper() {
             outline: none;
             border-color: #EAB308;
             box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+          }
+
+          .disabled-input {
+            opacity: 0.6;
+            cursor: not-allowed;
           }
 
           .info-box {
