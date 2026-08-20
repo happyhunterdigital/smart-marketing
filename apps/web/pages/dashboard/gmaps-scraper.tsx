@@ -1,10 +1,14 @@
 import DashboardLayout from '../../components/DashboardLayout';
 import { useState } from 'react';
-import { firebaseAuth, firestore } from '../../lib/firebase/config';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { firebaseAuth } from '../../lib/firebase/config';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+
+const functions = getFunctions();
+const performAuditFn = httpsCallable(functions, 'performAudit');
 
 export default function GmapsScraper() {
-  const [query, setQuery] = useState('');
+  const [businessName, setBusinessName] = useState('');
+  const [location, setLocation] = useState('');
   const [strategy, setStrategy] = useState<'Basic' | 'Moderate' | 'Deep'>('Basic');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<any>(null);
@@ -24,91 +28,28 @@ export default function GmapsScraper() {
     }
 
     try {
-      // First try API route, fallback directly to Firestore if running in static export
-      let jobCreated = false;
-      let createdJobId = '';
+      const response = await performAuditFn({
+        businessName: businessName.trim(),
+        location: location.trim(),
+        clientEmail: currentUser.email || '',
+      });
 
-      try {
-        const response = await fetch('/api/scrape-gmaps', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${currentUser.uid}`
-          },
-          body: JSON.stringify({
-            query,
-            strategy,
-            maxResults: strategy === 'Basic' ? 50 : strategy === 'Moderate' ? 500 : 5000,
-          }),
-        });
-
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          const data = await response.json();
-          if (response.ok) {
-            setResult(data);
-            jobCreated = true;
-          } else {
-            throw new Error(data.error || 'Failed to create job via API');
-          }
-        }
-      } catch (apiErr) {
-        // Fall back directly to Firestore client SDK (static hosting mode)
-        console.log('API route not available in static export mode, using direct Firestore client SDK...');
-      }
-
-      if (!jobCreated) {
-        // Direct Firestore creation
-        const userRef = doc(firestore, 'users', currentUser.uid);
-        const userDoc = await getDoc(userRef);
-
-        if (!userDoc.exists()) {
-          throw new Error('User profile record not found.');
-        }
-
-        const userData = userDoc.data();
-        const currentQuota = userData.gmapsQuota ?? 200;
-
-        if (currentQuota <= 0) {
-          throw new Error('Search quota exhausted. Please upgrade your plan under Billing.');
-        }
-
-        createdJobId = `${currentUser.uid}_${Date.now()}`;
-        const timestamp = new Date().toISOString();
-
-        await setDoc(doc(firestore, 'jobs', createdJobId), {
-          id: createdJobId,
-          userId: currentUser.uid,
-          tool: 'google-maps-scraper',
-          query: query,
-          strategy: strategy,
-          maxResults: strategy === 'Basic' ? 50 : strategy === 'Moderate' ? 500 : 5000,
-          status: 'pending',
-          createdAt: timestamp,
-          resultUrl: null,
-          error: null,
-        });
-
-        // Decrement quota in Firestore
-        await updateDoc(userRef, {
-          gmapsQuota: currentQuota - 1,
-        });
-
-        setResult({
-          jobId: createdJobId,
-          message: 'Job created successfully',
-        });
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred while starting the audit.');
+      const data = response.data as any;
+      setResult(data);
+    } catch (err: any) {
+      const msg = err?.message || err?.details || 'Audit failed. Please try again.';
+      setError(msg);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const score = result?.score;
+  const scoreColor = score >= 70 ? '#22C55E' : score >= 40 ? '#EAB308' : '#EF4444';
+
   return (
     <DashboardLayout>
-      <div className="scraper-page">
+      <div className="audit-page">
         <div className="page-header">
           <div>
             <div className="category-tag">ENTITY AUDIT · BUSINESS VERIFICATION</div>
@@ -117,63 +58,43 @@ export default function GmapsScraper() {
               Audit your own business listing — verify your official name, category, address, click-to-call phone, website, and ratings.
             </p>
           </div>
-          <a
-            href="https://github.com/happyhunterdigital/google-maps-scraper"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="repo-link"
-          >
-            ⭐ happyhunterdigital/google-maps-scraper
-          </a>
         </div>
 
         <div className="card">
-          <form onSubmit={handleSubmit} className="scraper-form">
-            <div className="form-group">
-              <label>Search Query & Target Location</label>
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="e.g., Happy Hunter Digital in Pretoria or Your Business Name in Your City"
-                required
-              />
-              <span className="field-hint">Search your exact business name and city for a precise audit.</span>
-            </div>
-
+          <form onSubmit={handleSubmit} className="audit-form">
             <div className="form-row">
               <div className="form-group flex-1">
-                <label>Audit Depth</label>
-                <select value={strategy} onChange={(e) => setStrategy(e.target.value as any)}>
-                  <option value="Basic">Basic — Free · 50 results · Core fields (~30s)</option>
-                  <option value="Moderate">Moderate — R5 · 500 results · Extended fields (~2–3 min)</option>
-                  <option value="Deep">Deep Search — R15 · 5,000 results · All 50+ fields (~5–10 min)</option>
-                </select>
-              </div>
-
-              <div className="form-group width-220">
-                <label>Max Results</label>
+                <label>Business Name</label>
                 <input
                   type="text"
-                  value={strategy === 'Basic' ? '50' : strategy === 'Moderate' ? '500' : '5,000'}
-                  disabled
-                  className="disabled-input"
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  placeholder="e.g., Happy Hunter Digital"
+                  required
                 />
-                <span className="field-hint">
-                  {strategy === 'Basic' ? 'Included free with Basic tier.' :
-                   strategy === 'Moderate' ? 'Included with Moderate tier (R5).' :
-                   'Included with Deep Search tier (R15).'}
-                </span>
+                <span className="field-hint">Your exact business name as it appears on Google Maps.</span>
+              </div>
+              <div className="form-group flex-1">
+                <label>Location / City</label>
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="e.g., Pretoria"
+                  required
+                />
+                <span className="field-hint">The city or area your business operates in.</span>
               </div>
             </div>
 
-            {strategy === 'Deep' && (
-              <div className="info-box">
-                <p>
-                  Deep Search runs a full sweep across multiple zoom levels and boundary passes for maximum coverage.
-                </p>
-              </div>
-            )}
+            <div className="form-group">
+              <label>Audit Depth</label>
+              <select value={strategy} onChange={(e) => setStrategy(e.target.value as any)}>
+                <option value="Basic">Basic — Free · Core fields (~30s)</option>
+                <option value="Moderate">Moderate — R5 · Extended fields (~2–3 min)</option>
+                <option value="Deep">Deep Search — R15 · All 50+ fields (~5–10 min)</option>
+              </select>
+            </div>
 
             <button type="submit" disabled={isSubmitting} className="submit-btn">
               {isSubmitting ? 'Running Audit...' : 'Start Business Audit'}
@@ -182,29 +103,86 @@ export default function GmapsScraper() {
 
           {error && (
             <div className="alert-box error">
-              <span>⚠️ {error}</span>
-            </div>
-          )}
-
-          {result && (
-            <div className="alert-box success">
-              <h3>Job Created Successfully!</h3>
-              <p><strong>Job ID:</strong> {result.jobId}</p>
-              <p>
-                Your audit is queued in background workers. Monitor progress in{' '}
-                <a href="/dashboard/jobs">My Jobs Center →</a>
-              </p>
+              <span>{error}</span>
             </div>
           )}
         </div>
 
+        {result && (
+          <div className="results-section">
+            <div className="score-card">
+              <div className="score-ring" style={{ borderColor: scoreColor }}>
+                <span className="score-num" style={{ color: scoreColor }}>{score}</span>
+                <span className="score-label">/ 100</span>
+              </div>
+              <div className="score-meta">
+                <span className="score-title" style={{ color: scoreColor }}>
+                  {score >= 70 ? 'HEALTHY ENTITY' : score >= 40 ? 'AT RISK' : 'CRITICAL'}
+                </span>
+                <span className="score-sub">Digital Survival Score</span>
+              </div>
+            </div>
+
+            {result.telemetry && (
+              <div className="telemetry-card">
+                <div className="tele-row">
+                  <span className="tele-label">Maps Status</span>
+                  <span className={`tele-value status-${result.telemetry.mapsStatus?.includes('VERIFIED') ? 'ok' : result.telemetry.mapsStatus?.includes('HIJACK') ? 'warn' : 'bad'}`}>
+                    {result.telemetry.mapsStatus}
+                  </span>
+                </div>
+                {result.telemetry.mapsName && (
+                  <div className="tele-row">
+                    <span className="tele-label">Maps Name</span>
+                    <span className="tele-value">{result.telemetry.mapsName}</span>
+                  </div>
+                )}
+                {result.telemetry.rating != null && (
+                  <div className="tele-row">
+                    <span className="tele-label">Rating</span>
+                    <span className="tele-value">{result.telemetry.rating} ({result.telemetry.reviewCount} reviews)</span>
+                  </div>
+                )}
+                <div className="tele-row">
+                  <span className="tele-label">Website</span>
+                  <span className="tele-value">{result.telemetry.website}</span>
+                </div>
+                <div className="tele-row">
+                  <span className="tele-label">Schema Markup</span>
+                  <span className={`tele-value ${result.telemetry.schema ? 'ok' : 'bad'}`}>
+                    {result.telemetry.schema ? `Detected (${result.telemetry.schemasDetected?.join(', ')})` : 'Missing'}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {result.truths && (
+              <div className="truths-card">
+                <h3>3 Truths</h3>
+                {result.truths.map((t: string, i: number) => (
+                  <div key={i} className="truth-item">
+                    <span className="truth-num">{i + 1}</span>
+                    <p>{t}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {result.summary && (
+              <div className="summary-card">
+                <h3>AI Analysis</h3>
+                <p>{result.summary}</p>
+              </div>
+            )}
+          </div>
+        )}
+
         <style jsx>{`
-          .scraper-page {
+          .audit-page {
             display: flex;
             flex-direction: column;
             gap: 24px;
           }
-
           .category-tag {
             font-size: 11px;
             font-weight: 800;
@@ -213,13 +191,11 @@ export default function GmapsScraper() {
             text-transform: uppercase;
             margin-bottom: 6px;
           }
-
           .page-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
           }
-
           .page-title {
             font-size: 26px;
             font-weight: 800;
@@ -227,69 +203,42 @@ export default function GmapsScraper() {
             margin: 0 0 6px;
             letter-spacing: -0.5px;
           }
-
           .page-subtitle {
             font-size: 13.5px;
             color: #8E8E93;
             margin: 0;
             max-width: 680px;
           }
-
-          .repo-link {
-            font-size: 12px;
-            color: #EAB308;
-            background: rgba(234, 179, 8, 0.1);
-            border: 1px solid rgba(234, 179, 8, 0.3);
-            padding: 6px 14px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.15s ease;
-          }
-
-          .repo-link:hover {
-            background: rgba(234, 179, 8, 0.2);
-            color: #FFFFFF;
-          }
-
           .card {
             background: #0D0D0D;
             border: 1px solid #1F1F1F;
             border-radius: 12px;
             padding: 28px;
           }
-
-          .scraper-form {
+          .audit-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
           }
-
           .form-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
           }
-
           .form-row {
             display: flex;
             gap: 16px;
           }
-
           .flex-1 { flex: 1; }
-          .width-220 { width: 220px; }
-
           label {
             font-size: 13px;
             font-weight: 700;
             color: #FFFFFF;
           }
-
           .field-hint {
             font-size: 11px;
             color: #8E8E93;
           }
-
           input, select {
             background: #141414;
             border: 1px solid #262626;
@@ -300,33 +249,11 @@ export default function GmapsScraper() {
             font-family: 'Inter', sans-serif;
             transition: border-color 0.15s ease;
           }
-
           input:focus, select:focus {
             outline: none;
             border-color: #EAB308;
             box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
           }
-
-          .disabled-input {
-            opacity: 0.6;
-            cursor: not-allowed;
-          }
-
-          .info-box {
-            background: rgba(234, 179, 8, 0.08);
-            border: 1px solid rgba(234, 179, 8, 0.25);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: #EAB308;
-            font-size: 12.5px;
-          }
-
-          .info-box a {
-            color: #FFFFFF;
-            text-decoration: underline;
-            font-weight: 600;
-          }
-
           .submit-btn {
             background: #EAB308;
             color: #050505;
@@ -340,13 +267,11 @@ export default function GmapsScraper() {
             transition: all 0.15s ease;
             box-shadow: 0 0 15px rgba(234, 179, 8, 0.35);
           }
-
           .submit-btn:hover {
             background: #ca8a04;
             transform: translateY(-1px);
             box-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
           }
-
           .submit-btn:disabled {
             background: #1F1F1F;
             color: #8E8E93;
@@ -354,13 +279,11 @@ export default function GmapsScraper() {
             transform: none;
             box-shadow: none;
           }
-
           .alert-box {
             padding: 16px;
             border-radius: 8px;
             margin-top: 20px;
           }
-
           .alert-box.error {
             background: rgba(239, 68, 68, 0.12);
             border: 1px solid #EF4444;
@@ -368,29 +291,131 @@ export default function GmapsScraper() {
             font-size: 13px;
             font-weight: 500;
           }
-
-          .alert-box.success {
-            background: rgba(234, 179, 8, 0.12);
-            border: 1px solid #EAB308;
-            color: #FFFFFF;
+          .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
           }
-
-          .alert-box.success h3 {
-            margin: 0 0 6px;
-            font-size: 15px;
+          .score-card {
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+          }
+          .score-ring {
+            width: 90px;
+            height: 90px;
+            border: 4px solid;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+          }
+          .score-num {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1;
+          }
+          .score-label {
+            font-size: 11px;
+            color: #8E8E93;
+          }
+          .score-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+          .score-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+          }
+          .score-sub {
+            font-size: 12px;
+            color: #8E8E93;
+          }
+          .telemetry-card {
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+          .tele-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #1A1A1A;
+          }
+          .tele-row:last-child { border-bottom: none; }
+          .tele-label {
+            font-size: 12px;
+            color: #8E8E93;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          .tele-value {
+            font-size: 13px;
+            color: #FFFFFF;
+            font-weight: 500;
+          }
+          .tele-value.ok { color: #22C55E; }
+          .tele-value.warn { color: #EAB308; }
+          .tele-value.bad { color: #EF4444; }
+          .truths-card, .summary-card {
+            background: #0D0D0D;
+            border: 1px solid #1F1F1F;
+            border-radius: 12px;
+            padding: 24px;
+          }
+          .truths-card h3, .summary-card h3 {
+            margin: 0 0 16px;
+            font-size: 14px;
             color: #EAB308;
             font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
           }
-
-          .alert-box.success p {
-            margin: 4px 0;
-            font-size: 13px;
+          .truth-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #1A1A1A;
           }
-
-          .alert-box.success a {
+          .truth-item:last-child { border-bottom: none; }
+          .truth-num {
+            width: 24px;
+            height: 24px;
+            background: rgba(234, 179, 8, 0.15);
             color: #EAB308;
-            font-weight: 700;
-            text-decoration: underline;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+          }
+          .truth-item p {
+            margin: 0;
+            font-size: 13px;
+            color: #D1D5DB;
+            line-height: 1.6;
+          }
+          .summary-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #D1D5DB;
+            line-height: 1.7;
           }
         `}</style>
       </div>
