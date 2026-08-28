@@ -147,11 +147,11 @@ export default function LandingPage() {
                   <div className="ledger-line"><span className="mono">fact · hours</span><span>Mon–Sat 07:00–21:00</span><span className="tag-p">PROBABLE</span></div>
                 </div>
 
-                {/* image tint */}
+                {/* hero image — Cloudinary brain */}
                 <div className="preview-img">
-                  <img src="https://picsum.photos/seed/hunter-stellenbosch/720/320" alt="" loading="lazy" />
+                  <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1787938869/happyhunterdigital_smart_marketing_Digital_brain_with_marketing_icons_202608281925_t1yzqq.jpg" alt="Digital brain with marketing icons — Happy Hunter Digital" loading="eager" />
                   <div className="preview-img-scrim" />
-                  <span className="preview-img-label">Stellenbosch · entity map · every business is a lead until contacted</span>
+                  <span className="preview-img-label">Digital brain · entity-first · every signal is verifiable</span>
                 </div>
               </div>
             </div>
