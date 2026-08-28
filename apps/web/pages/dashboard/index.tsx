@@ -101,14 +101,9 @@ export default function DashboardHome() {
                 <span className="tag">x-crm-ingest-secret</span>
                 <span className="tag">evidence ledger</span>
               </div>
-              <div style={{ display: 'flex', gap: 8 }}>
-                <Link href="/dashboard/crm" className="tool-btn btn-gold" style={{ flex: 1, background: '#7c3aed', borderColor: '#7c3aed', color: '#fff' }} id="index-eve-queue-btn">
-                  Open Agent Queue →
-                </Link>
-                <a href="https://github.com/happyhunterdigital/crm#the-autonomous-agent-appsagent--eve" target="_blank" rel="noopener noreferrer" className="tool-btn btn-secondary" style={{ flex: 0.7 }}>
-                  Eve Docs
-                </a>
-              </div>
+              <Link href="/dashboard/crm" className="tool-btn btn-gold" style={{ background: '#7c3aed', borderColor: '#7c3aed', color: '#fff' }} id="index-eve-queue-btn">
+                Open Agent Queue →
+              </Link>
               <span style={{ fontSize: 11, color: '#8E8E93' }}>
                 Now: <code>submitChatbotLead</code> + <code>whatsappFlow.saveLead</code> both <code>void relayAuditToCrm()</code> → CRM <code>AuditsController:intake</code> (fail-open, <code>WHATSAPP_INGEST_SECRET</code>).
               </span>

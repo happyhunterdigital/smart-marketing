@@ -41,10 +41,6 @@ export default function LandingPage() {
             <a href="#tools" className="nav-link">Tools</a>
             <a href="#process" className="nav-link">How it works</a>
             <Link href="/dashboard/billing" className="nav-link">Pricing</Link>
-            <a href="https://github.com/happyhunterdigital/crm" target="_blank" rel="noopener noreferrer" className="nav-github">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.54 9.54 0 0 1 12 6.84a9.54 9.54 0 0 1 2.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12C22 6.48 17.52 2 12 2Z"/></svg>
-              GitHub
-            </a>
           </div>
 
           <div className="nav-cta">
@@ -395,8 +391,6 @@ export default function LandingPage() {
         .nav-links { display:flex; align-items:center; gap:18px; }
         .nav-link { font-size:13px; font-weight:600; color:#9ca3af; text-decoration:none; }
         .nav-link:hover { color:#fff; }
-        .nav-github { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#f59e0b; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.18); padding:6px 12px; border-radius:999px; text-decoration:none; }
-        .nav-github:hover { background:rgba(245,158,11,0.14); }
         .nav-cta { display:flex; align-items:center; gap:10px; }
         .nav-loading { width:18px; height:18px; border:2px solid rgba(255,255,255,0.12); border-top-color:#f59e0b; border-radius:50%; animation: spin 0.7s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg);} }

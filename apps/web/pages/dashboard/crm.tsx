@@ -117,15 +117,6 @@ export default function HappyHunterCRMPage() {
 
           <div className="hero-actions">
             <a
-              href="https://github.com/happyhunterdigital/crm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-              id="crm-hero-github-btn"
-            >
-              View on GitHub
-            </a>
-            <a
               href="http://localhost:3000"
               target="_blank"
               rel="noopener noreferrer"
@@ -431,7 +422,7 @@ export default function HappyHunterCRMPage() {
               <div className="code-block">
                 <pre>
 {`# 1. Clone Happy Hunter CRM
-git clone https://github.com/happyhunterdigital/crm.git
+# Contact your administrator for repository access
 cd crm
 
 # 2. Environment Configuration
