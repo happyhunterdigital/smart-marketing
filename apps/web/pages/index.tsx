@@ -32,7 +32,7 @@ export default function LandingPage() {
               <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1780206015/favicon_jafn1r.jpg" alt="" width={28} height={28} style={{ borderRadius: 7, display: 'block' }} />
             </span>
             <span className="brand-word">
-              <span className="w-happy">happy</span><span className="w-hunter">hunter</span>
+              <span className="w-name"><span className="w-happy">happy</span><span className="w-hunter">hunter</span><span className="w-digital">digital</span></span>
               <span className="w-sub">Smart Marketing</span>
             </span>
           </Link>
@@ -385,8 +385,10 @@ export default function LandingPage() {
         .brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
         .brand-mark { width:34px; height:34px; border-radius:8px; overflow:hidden; box-shadow: 0 0 18px rgba(251,191,36,0.28); flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#111; }
         .brand-word { display:flex; flex-direction:column; line-height:1; }
-        .w-happy { font-size:15px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
-        .w-hunter { font-size:15px; font-weight:800; color:#f59e0b; letter-spacing:-0.02em; }
+        .w-name { display:inline-flex; align-items:baseline; font-size:15px; font-weight:800; letter-spacing:-0.02em; line-height:1; white-space:nowrap; }
+        .w-happy { color:#fff; }
+        .w-hunter { color:#f59e0b; }
+        .w-digital { color:#fff; }
         .w-sub { font-size:9px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:#6b7280; margin-top:3px; }
         .nav-links { display:flex; align-items:center; gap:18px; }
         .nav-link { font-size:13px; font-weight:600; color:#9ca3af; text-decoration:none; }

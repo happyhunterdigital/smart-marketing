@@ -137,8 +137,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1780206015/favicon_jafn1r.jpg" alt="Happy Hunter Digital" width="20" height="20" style={{ borderRadius: '4px' }} />
           </div>
           <div className="brand-wordmark">
-            {/* Wordmark: happy (white) + hunter (amber) + digital (gray) per BRAND.md §2 */}
-            <span className="wm-happy">happy</span><span className="wm-hunter">hunter</span>
+            <span className="wm-name"><span className="wm-happy">happy</span><span className="wm-hunter">hunter</span><span className="wm-digital">digital</span></span>
             <span className="wm-sub">Smart Marketing</span>
           </div>
         </div>
@@ -339,31 +338,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           line-height: 1;
         }
 
-        /* Wordmark line 1: happy (white bold) + hunter (amber bold) */
-        .wm-happy {
-          font-size: 15px;
-          font-weight: 800;
-          color: #FFFFFF;
-          letter-spacing: -0.01em;
-        }
-
-        .wm-hunter {
-          font-size: 15px;
-          font-weight: 800;
-          color: #f59e0b;
-          letter-spacing: -0.01em;
-        }
-
-        /* Wordmark line 2: "Smart Marketing" in gray — per §2 quiet context */
-        .wm-sub {
-          display: block;
-          font-size: 9px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-          color: #6b7280;
-          margin-top: 3px;
-        }
+        .wm-name { display:inline-flex; align-items:baseline; font-size:15px; font-weight:800; letter-spacing:-0.01em; line-height:1; white-space:nowrap; }
+        .wm-happy { color:#FFFFFF; }
+        .wm-hunter { color:#f59e0b; }
+        .wm-digital { color:#FFFFFF; }
+        .wm-sub { display:block; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.18em; color:#6b7280; margin-top:3px; }
 
         /* === Nav group label — forensic mono label per BRAND.md §4 === */
         .nav-group-label {
