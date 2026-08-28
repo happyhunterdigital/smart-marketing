@@ -81,6 +81,40 @@ export default function DashboardHome() {
             </div>
           </div>
 
+          {/* Eve Agent Queue — CRM Control Card */}
+          <div className="tool-card" style={{ borderColor: 'rgba(124,58,237,0.35)', background: 'linear-gradient(160deg, rgba(124,58,237,0.08) 0%, #0a0a0a 100%)' }}>
+            <div className="tool-card-top">
+              <div className="tool-icon-box" style={{ background: '#7c3aed', color: '#fff' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 9h6v6H9z" /><path d="M9 3v6" /><path d="M15 3v6" /><path d="M9 15v6" /><path d="M15 15v6" /><path d="M3 9h6" /><path d="M3 15h6" /><path d="M15 9h6" /><path d="M15 15h6" />
+                </svg>
+              </div>
+              <span className="featured-badge" style={{ background: '#7c3aed' }}>Eve Queue · Dispatch</span>
+            </div>
+            <h3 className="tool-name">Eve Agent Queue — Autonomous Research</h3>
+            <p className="tool-desc">
+              Where Smart Marketing leads land. Eve drains <code>AgentTask</code> rows via <code>FOR UPDATE SKIP LOCKED</code> (<code>apps/agent/agent/schedules/dispatch.ts</code>), runs <code>research_person</code>/<code>enrich_company</code> in deny-all sandbox, and commits <code>VERIFIED</code> vs <code>PROBABLE</code> facts to the evidence ledger.
+            </p>
+            <div className="tool-footer">
+              <div className="tool-tags">
+                <span className="tag">POST /internal/crm/audits</span>
+                <span className="tag">x-crm-ingest-secret</span>
+                <span className="tag">evidence ledger</span>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <Link href="/dashboard/crm" className="tool-btn btn-gold" style={{ flex: 1, background: '#7c3aed', borderColor: '#7c3aed', color: '#fff' }} id="index-eve-queue-btn">
+                  Open Agent Queue →
+                </Link>
+                <a href="https://github.com/happyhunterdigital/crm#the-autonomous-agent-appsagent--eve" target="_blank" rel="noopener noreferrer" className="tool-btn btn-secondary" style={{ flex: 0.7 }}>
+                  Eve Docs
+                </a>
+              </div>
+              <span style={{ fontSize: 11, color: '#8E8E93' }}>
+                Now: <code>submitChatbotLead</code> + <code>whatsappFlow.saveLead</code> both <code>void relayAuditToCrm()</code> → CRM <code>AuditsController:intake</code> (fail-open, <code>WHATSAPP_INGEST_SECRET</code>).
+              </span>
+            </div>
+          </div>
+
           {/* Google Maps Scraper Card */}
           <div className="tool-card">
             <div className="tool-card-top">
@@ -133,28 +167,30 @@ export default function DashboardHome() {
             </div>
           </div>
 
-          {/* OpenWA Card */}
-          <div className="tool-card">
+          {/* WhatsApp Bot — Meta Cloud API (replaces OpenWA) */}
+          <div className="tool-card" style={{ borderColor: 'rgba(37,211,102,0.25)' }}>
             <div className="tool-card-top">
-              <div className="tool-icon-box amber-light">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="tool-icon-box" style={{ background: 'rgba(37,211,102,0.12)', color: '#25D366' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-1.9.5 4.48 4.48 0 0 0 1.95-2.5 8.9 8.9 0 0 1-2.8 1.07 4.48 4.48 0 0 0-7.64 4.08 12.7 12.7 0 0 1-9.2-4.7 4.48 4.48 0 0 0 1.39 6 4.4 4.4 0 0 1-2-.55v.06a4.48 4.48 0 0 0 3.59 4.39 4.52 4.52 0 0 1-2 .07 4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 3 19.13a12.67 12.67 0 0 0 6.86 2.01c8.23 0 12.73-6.82 12.73-12.73 0-.19 0-.38-.01-.57A9.14 9.14 0 0 0 24 5.34a8.9 8.9 0 0 1-2.6.71z" style={{ display: 'none' }} />
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l.86-.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
               </div>
-              <span className="status-badge upcoming">Ready to Deploy</span>
+              <span className="status-badge live" style={{ background: 'rgba(37,211,102,0.12)', color: '#25D366', borderColor: 'rgba(37,211,102,0.25)' }}>● Live — Meta Cloud API</span>
             </div>
-            <h3 className="tool-name">OpenWA — WhatsApp API</h3>
+            <h3 className="tool-name">WhatsApp Bot — Sales & Support</h3>
             <p className="tool-desc">
-              Self-hosted WhatsApp API gateway powered by Baileys. Send notifications, chat triggers,
-              and interactive flows with zero per-message fees.
+              Official Meta Cloud API bot — interactive buttons, guided lead flows, AI replies (DeepSeek/Gemini),
+              and doc delivery. Web Chatbot + WhatsApp share one brain (<code>servicesKnowledge</code>). Verified via <code>VERIFY_TOKEN</code>.
             </p>
             <div className="tool-footer">
               <div className="tool-tags">
-                <span className="tag">Baileys API</span>
-                <span className="tag">Webhooks</span>
+                <span className="tag">Meta Cloud API</span>
+                <span className="tag">Interactive Buttons</span>
+                <span className="tag">CRM Relay</span>
               </div>
-              <Link href="/dashboard/jobs" className="tool-btn btn-secondary" id="index-openwa-btn">
-                Configure →
+              <Link href="/dashboard/whatsapp" className="tool-btn btn-secondary" id="index-whatsapp-btn" style={{ borderColor: 'rgba(37,211,102,0.3)', color: '#25D366' }}>
+                Open WhatsApp Control →
               </Link>
             </div>
           </div>

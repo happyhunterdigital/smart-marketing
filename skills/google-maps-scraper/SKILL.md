@@ -73,7 +73,7 @@ Auditing your own business uses 1 search per listing, so the free plan covers yo
 
 - **Comp AI CRM** — store the audit results and track fixes per business
 - **Social Analyzer** — check the same business across 1,000+ social networks
-- **OpenWA** — message the business owner about their audit findings
+- **WhatsApp Bot** — message the business owner about their audit findings (official Meta Cloud API + CTA-doc delivery)
 - **OpenReply** — convert comments into conversations for the audit service
 - **OpenMontage** — produce the video content that sells the audit service
 

@@ -177,6 +177,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
 
           <Link
+            href="/dashboard/whatsapp"
+            className={`nav-item ${currentPath.startsWith('/dashboard/whatsapp') ? 'active' : ''}`}
+          >
+            <span className="nav-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l.86-.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </span>
+            <span>WhatsApp Bot</span>
+            <span className="badge-signal" style={{ background: '#25D366' }}>Live</span>
+          </Link>
+
+          <Link
             href="/dashboard/jobs"
             className={`nav-item ${currentPath.startsWith('/dashboard/jobs') ? 'active' : ''}`}
           >
@@ -198,12 +211,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="upcoming-tools">
           {[
             { label: 'OpenReply — IG DM', status: 'Ready' },
-            { label: 'OpenWA — WhatsApp', status: 'Ready' },
+            { label: 'WhatsApp Bot — Official', status: 'Live' },
             { label: 'OpenMontage — Video', status: 'Soon' },
           ].map((tool) => (
             <div key={tool.label} className="upcoming-item">
               <span>{tool.label}</span>
-              <span className={`badge-status ${tool.status === 'Soon' ? 'soon' : 'ready'}`}>
+              <span className={`badge-status ${tool.status === 'Soon' ? 'soon' : tool.status === 'Live' ? 'ready' : 'ready'}`}>
                 {tool.status}
               </span>
             </div>

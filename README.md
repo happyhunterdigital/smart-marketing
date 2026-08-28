@@ -9,7 +9,7 @@ A collection of self-hosted marketing tools for automated lead generation, custo
 - **Happy Hunter CRM** - Agentic-first CRM designed for AI agents ([happyhunterdigital/crm](https://github.com/happyhunterdigital/crm))
 - **Google Maps Business Auditor** - Audit your own or a client's Google Maps listing: name, category, address, phone, website, and ratings ([happyhunterdigital/google-maps-scraper](https://github.com/happyhunterdigital/google-maps-scraper))
 - **OpenReply** - Instagram comment-to-DM automation
-- **OpenWA** - Self-hosted WhatsApp API gateway
+- **WhatsApp Bot** - Official Meta WhatsApp Cloud API bot (replaces OpenWA) — interactive buttons, guided flows, AI replies, secure doc CTAs
 - **Social Analyzer** - OSINT username search across social networks
 - **OpenMontage** - Agent-first AI video production
 
@@ -40,7 +40,7 @@ smart-marketing/
 │   ├── google-maps-scraper/
 │   ├── openmontage/
 │   ├── openreply/
-│   ├── openwa/
+│   ├── whatsapp-bot/        # WhatsApp Bot — Meta Cloud API (replaces openwa)
 │   └── social-analyzer/
 └── package.json (workspace)
 ```

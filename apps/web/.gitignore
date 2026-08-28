@@ -1,0 +1,4 @@
+# Local env files — real values are injected by GitHub Actions
+.env.local
+.env.*.local
+.env

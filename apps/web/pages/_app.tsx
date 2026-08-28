@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { firebaseAuth } from '../lib/firebase/config';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import dynamic from 'next/dynamic';
+const Chatbot = dynamic(() => import('../components/Chatbot').then(m => m.Chatbot), { ssr: false });
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -68,5 +70,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return null;
   }
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <Chatbot />
+    </>
+  );
 }

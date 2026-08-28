@@ -1,9 +1,9 @@
 {
   "projects": {
-    "default": "happy-hunter-systems"
+    "default": "smart-marketing-81602"
   },
   "targets": {
-    "happy-hunter-systems": {
+    "smart-marketing-81602": {
       "hosting": {
         "smart-marketing": [
           "smart-marketing"
