@@ -51,18 +51,9 @@ jobs:
         with:
           credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
 
-      - name: Debug GCP access
-        continue-on-error: true
-        run: |
-          echo "=== SA project_id ==="; jq -r .project_id "$GOOGLE_APPLICATION_CREDENTIALS" || cat "$GOOGLE_APPLICATION_CREDENTIALS" | head -c 200
-          echo ""; echo "=== gcloud projects list ==="; gcloud projects list --format="value(projectId)" 2>&1 | head -n 30 || true
-          echo "=== firebase projects:list ==="; firebase projects:list 2>&1 | head -n 50 || true
-          echo "=== describe smart-marketing-81602 ==="; gcloud projects describe smart-marketing-81602 --format="value(projectId)" 2>&1 | head -n 20 || true
-          echo "=== describe happy-hunter-systems ==="; gcloud projects describe happy-hunter-systems --format="value(projectId)" 2>&1 | head -n 20 || true
-
       - name: Deploy hosting & Firestore rules
-        run: firebase deploy --project smart-marketing-81602 --only hosting:smart-marketing,firestore:rules --non-interactive --force
+        run: firebase deploy --project happy-hunter-systems --only hosting:smart-marketing,firestore:rules --non-interactive --force
 
       - name: Deploy Cloud Functions (optional)
         continue-on-error: true
-        run: firebase deploy --project smart-marketing-81602 --only functions --non-interactive --force
+        run: firebase deploy --project happy-hunter-systems --only functions --non-interactive --force
