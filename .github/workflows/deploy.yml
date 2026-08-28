@@ -51,5 +51,9 @@ jobs:
         with:
           credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
 
-      - name: Deploy hosting, functions & Firestore rules
-        run: firebase deploy --project smart-marketing-81602 --only hosting:smart-marketing,functions,firestore:rules --non-interactive --force
+      - name: Deploy hosting & Firestore rules
+        run: firebase deploy --project smart-marketing-81602 --only hosting:smart-marketing,firestore:rules --non-interactive --force
+
+      - name: Deploy Cloud Functions (optional)
+        continue-on-error: true
+        run: firebase deploy --project smart-marketing-81602 --only functions --non-interactive --force

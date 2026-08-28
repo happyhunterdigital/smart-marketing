@@ -187,7 +187,7 @@ export default function LandingPage() {
           {/* 1 — CRM — featured 2col + image tint */}
           <Link href="/dashboard/crm" className="cell cell-featured cell-clickable">
             <div className="cell-img">
-              <img src="https://picsum.photos/seed/hunter-crm/900/520" alt="" loading="lazy" />
+              <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1787941986/happyhunterdigital_smart_marketing_Website_card_showcasing_CRM_ead3lc.jpg" alt="Happy Hunter CRM — website card showcasing CRM" loading="lazy" />
               <div className="cell-scrim" />
             </div>
             <div className="cell-body">
@@ -200,13 +200,18 @@ export default function LandingPage() {
           </Link>
 
           {/* 2 — Auditor */}
-          <Link href="/dashboard/gmaps-scraper" className="cell cell-clickable">
-            <span className="pill pill-live">● Live tool</span>
-            <div className="cell-icon">◉</div>
-            <h3>Google Maps Business Auditor</h3>
-            <p>Audit name, category, address, phone, website, ratings. 50+ fields to find red flags before customers do.</p>
-            <div className="cell-tags"><span>Botasaurus</span><span>50+ fields</span></div>
-            <span className="cell-link">Run audit →</span>
+          <Link href="/dashboard/gmaps-scraper" className="cell cell-image cell-clickable">
+            <div className="cell-img sm">
+              <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1787941987/happyhunterdigital_smart_marketing_Google_Maps_business_auditor_kqssi2.jpg" alt="Google Maps Business Auditor — website card" loading="lazy" />
+              <div className="cell-scrim" />
+            </div>
+            <div className="cell-body sm">
+              <span className="pill pill-live">● Live tool</span>
+              <h3>Google Maps Business Auditor</h3>
+              <p>Audit name, category, address, phone, website, ratings. 50+ fields to find red flags before customers do.</p>
+              <div className="cell-tags"><span>Botasaurus</span><span>50+ fields</span></div>
+              <span className="cell-link">Run audit →</span>
+            </div>
           </Link>
 
           {/* 3 — Eve Queue — amber tint */}
@@ -221,7 +226,7 @@ export default function LandingPage() {
           {/* 4 — WhatsApp — image */}
           <Link href="/dashboard/whatsapp" className="cell cell-image cell-clickable">
             <div className="cell-img sm">
-              <img src="https://picsum.photos/seed/whatsapp-hunter/700/420" alt="" loading="lazy" />
+              <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1787941987/happyhunterdigital_smart_marketing_Website_card_design_for_WhatsAppBot_op9wpe.jpg" alt="WhatsApp Bot — website card design" loading="lazy" />
               <div className="cell-scrim" />
             </div>
             <div className="cell-body sm">
@@ -233,12 +238,18 @@ export default function LandingPage() {
           </Link>
 
           {/* 5 — OpenReply */}
-          <Link href="/dashboard/jobs" className="cell cell-clickable">
-            <span className="pill pill-muted">Ready to deploy</span>
-            <h3>OpenReply — Instagram DM</h3>
-            <p>Self-hosted ManyChat alternative. Keyword on comments/reels → tracked link DMs, follow-gating, BullMQ.</p>
-            <div className="cell-tags"><span>Meta Graph API</span><span>BullMQ</span></div>
-            <span className="cell-link">View queue →</span>
+          <Link href="/dashboard/jobs" className="cell cell-image cell-clickable">
+            <div className="cell-img sm">
+              <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1787941987/happyhunterdigital_smart_marketing_Website_card_design_for_InstagramDM_ick4fw.jpg" alt="OpenReply Instagram DM — website card design" loading="lazy" />
+              <div className="cell-scrim" />
+            </div>
+            <div className="cell-body sm">
+              <span className="pill pill-muted">Ready to deploy</span>
+              <h3>OpenReply — Instagram DM</h3>
+              <p>Self-hosted ManyChat alternative. Keyword on comments/reels → tracked link DMs, follow-gating, BullMQ.</p>
+              <div className="cell-tags"><span>Meta Graph API</span><span>BullMQ</span></div>
+              <span className="cell-link">View queue →</span>
+            </div>
           </Link>
 
           {/* 6 — Social + OpenMontage combined? keep Social */}
