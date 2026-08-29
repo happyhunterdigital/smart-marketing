@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
 
 /* Cal Sans is served via CDN — fallback to system bold if unavailable */
 @font-face {
@@ -49,11 +51,11 @@
   /* === Glow === */
   --amber-glow:       0 0 40px rgba(251, 191, 36, 0.15);
 
-  /* === Typography === */
-  --font-display:     'CalSans', 'Inter', -apple-system, sans-serif;
+  /* === Typography — 2026 editorial: Clash/Syne display + Mono grotesque === */
+  --font-display:     'Clash Display', 'Syne', 'CalSans', Inter, -apple-system, sans-serif;
   --font-sans:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-hand:        'Caveat', cursive;
-  --font-mono:        'SF Mono', 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-mono:        'JetBrains Mono', 'SF Mono', Consolas, monospace;
 }
 
 * {
