@@ -3,189 +3,188 @@ import { firebaseAuth, firestore } from '../lib/firebase/config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+import Link from 'next/link';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
+
+  const redirectAfterAuth = async (uid: string) => {
+    try {
+      const snap = await getDoc(doc(firestore, 'users', uid));
+      const data = snap.data();
+      if (!data?.role) {
+        router.push('/onboarding');
+      } else {
+        router.push('/dashboard');
+      }
+    } catch {
+      router.push('/dashboard');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setError('');
+    setLoading(true);
     try {
       if (isRegistering) {
-        // Register new user
         const userCred = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-        
-        // Initialize user record in Firestore with free plan
         await setDoc(doc(firestore, 'users', userCred.user.uid), {
           email: userCred.user.email,
           plan: 'free',
           gmapsQuota: 200,
+          role: null,
           createdAt: new Date().toISOString(),
         });
+        await redirectAfterAuth(userCred.user.uid);
       } else {
-        // Login existing user
-        await signInWithEmailAndPassword(firebaseAuth, email, password);
+        const cred = await signInWithEmailAndPassword(firebaseAuth, email, password);
+        await redirectAfterAuth(cred.user.uid);
       }
-      
-      router.push('/dashboard');
-    } catch (error) {
-      console.error('Auth error:', error);
-      alert(error instanceof Error ? error.message : 'An error occurred');
+    } catch (err: any) {
+      setError(err?.message || 'Authentication failed');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleGoogleSignIn = async () => {
+    setError('');
+    setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(firebaseAuth, provider);
-
-      // Create Firestore user doc if first time
       const userRef = doc(firestore, 'users', result.user.uid);
       const userSnap = await getDoc(userRef);
       if (!userSnap.exists()) {
         await setDoc(userRef, {
           email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
           plan: 'free',
           gmapsQuota: 200,
+          role: null,
           createdAt: new Date().toISOString(),
         });
+        router.push('/onboarding');
+      } else {
+        await redirectAfterAuth(result.user.uid);
       }
-
-      router.push('/dashboard');
-    } catch (error) {
-      console.error('Google auth error:', error);
-      alert(error instanceof Error ? error.message : 'Google sign-in failed');
+    } catch (err: any) {
+      setError(err?.message || 'Google sign-in failed');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>{isRegistering ? 'Sign Up' : 'Login'}</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">
-            {isRegistering ? 'Sign Up' : 'Login'}
-          </button>
-        </form>
-        <div className="divider"><span>or</span></div>
-        <button type="button" onClick={handleGoogleSignIn} className="google-btn">
-          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.001-.001 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-          Sign in with Google
-        </button>
-        <button 
-          type="button" 
-          onClick={() => setIsRegistering(!isRegistering)}
-          className="toggle-btn"
-        >
-          {isRegistering ? 'Already have an account? Login' : 'Need an account? Register'}
-        </button>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 py-10 relative overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 900px 600px at 50% 0%, rgba(251,191,36,0.06) 0%, transparent 62%)' }} aria-hidden="true" />
 
-      <style jsx>{`
-        .auth-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-        }
-        .auth-card {
-          padding: 40px;
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-          width: 100%;
-          max-width: 400px;
-        }
-        h1 {
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        div {
-          margin-bottom: 15px;
-        }
-        label {
-          display: block;
-          margin-bottom: 5px;
-        }
-        input {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        button {
-          width: 100%;
-          padding: 12px;
-          background: #0070f3;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-        button:hover {
-          background: #0050c3;
-        }
-        .toggle-btn {
-          background: none;
-          color: #0070f3;
-          margin-top: 15px;
-        }
-        .divider {
-          text-align: center;
-          margin: 20px 0;
-          position: relative;
-        }
-        .divider::before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: #ddd;
-        }
-        .divider span {
-          background: white;
-          padding: 0 12px;
-          position: relative;
-          color: #888;
-          font-size: 14px;
-        }
-        .google-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          background: white;
-          color: #333;
-          border: 1px solid #ccc;
-          font-size: 15px;
-          font-weight: 500;
-        }
-        .google-btn:hover {
-          background: #f5f5f5;
-        }
-      `}</style>
+      <div className="w-full max-w-md relative z-10">
+        <div className="text-center mb-6">
+          <Link href="/" className="inline-flex items-center gap-2.5">
+            <img src="https://res.cloudinary.com/dkyg07qvv/image/upload/v1780206015/favicon_jafn1r.jpg" alt="" width={32} height={32} className="rounded-lg shadow-[0_0_18px_rgba(251,191,36,0.3)]" />
+            <span className="text-[11px] font-black uppercase tracking-[0.18em] text-zinc-500">happyhunterdigital</span>
+          </Link>
+        </div>
+
+        <div className="rounded-[2rem] border border-white/5 bg-[#0a0a0a] p-8 shadow-[0_0_40px_rgba(251,191,36,0.08)]">
+          <div className="text-center mb-6">
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-500">
+              {isRegistering ? 'Create account' : 'Welcome back'}
+            </span>
+            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white" style={{ fontFamily: 'CalSans, Inter, sans-serif' }}>
+              {isRegistering ? 'Create your workspace' : 'Sign in to continue'}
+            </h1>
+            <p className="mt-1.5 text-sm text-zinc-400">
+              {isRegistering ? 'Email + Google supported. Roles chosen next.' : 'Use email or continue with Google.'}
+            </p>
+          </div>
+
+          {error && (
+            <div className="mb-4 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="mb-1.5 block text-[11px] font-bold uppercase tracking-widest text-zinc-300">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="you@company.co.za"
+                className="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+              />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-[11px] font-bold uppercase tracking-widest text-zinc-300">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+                className="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading || !email || !password}
+              className={`w-full rounded-xl py-3 text-sm font-black uppercase tracking-widest transition-all ${
+                loading || !email || !password
+                  ? 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
+                  : 'bg-amber-500 text-black hover:bg-amber-400 active:scale-[0.98] shadow-[0_0_20px_rgba(251,191,36,0.2)]'
+              }`}
+            >
+              {loading ? 'Please wait…' : isRegistering ? 'Create account →' : 'Sign in →'}
+            </button>
+          </form>
+
+          <div className="my-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-white/10" />
+            <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">or</span>
+            <div className="h-px flex-1 bg-white/10" />
+          </div>
+
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            disabled={loading}
+            className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white px-4 py-3 text-sm font-semibold text-black hover:bg-zinc-100 active:scale-[0.98] disabled:opacity-60"
+          >
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" />
+              <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" />
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" />
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.001-.001 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" />
+            </svg>
+            Continue with Google
+          </button>
+
+          <div className="mt-6 text-center">
+            <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="text-sm font-semibold text-zinc-400 hover:text-amber-500">
+              {isRegistering ? 'Already have an account? Sign in' : 'Need an account? Create one'}
+            </button>
+            <p className="mt-3 text-[11px] leading-relaxed text-zinc-600">
+              Firebase Auth: enable <b>Email/Password</b> + <b>Google</b> in console. Set Project public name to <b>happyhunterdigital</b> and support email <b>happyhunterdigital@gmail.com</b> (seen in your screenshot).
+            </p>
+          </div>
+        </div>
+
+        <p className="mt-4 text-center text-xs text-zinc-600">
+          By continuing you agree to our terms. Roles are saved to <code className="rounded bg-white/10 px-1 py-0.5">users/{'{uid}'}.role</code>.
+        </p>
+      </div>
     </div>
   );
 }
