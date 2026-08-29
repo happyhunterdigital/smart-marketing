@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { firebaseAuth } from '../lib/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
+import RoiCalculator from '../components/RoiCalculator';
+import DiagnosticCaseStudies from '../components/DiagnosticCaseStudies';
+import { ArrowDown, Zap, Shield, Activity, BarChart3, Terminal } from 'lucide-react';
 
 // Blueprint: Editorial / Brutalist Hybrid — 2026
-// Structural geometry, crisp typography (Clash/Syne display + JetBrains Mono labels), tactile 1px borders/inset shadows, snappy spring, mono base + amber accent, proof of work.
+// Structural geometry, crisp typography (Clash Display / Syne display + JetBrains Mono), tactile 1px borders, ROI estimator, diagnostic case studies.
 
 export default function LandingPage() {
   const [user, setUser] = useState<any>(null);
@@ -23,12 +26,12 @@ export default function LandingPage() {
       <div className="ambient" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
 
-      {/* UTILITY BAR — editorial dividing line */}
+      {/* ASCII WIREFRAME STRUCTURAL HEADER BAR */}
       <div className="utility-bar">
         <div className="utility-inner">
-          <span className="mono-label">CAPE TOWN — EST. 2024</span>
-          <span className="mono-label">SYSTEMS FOR AMBITIOUS ENTITIES</span>
-          <span className="mono-label hide-md">12 STATIC ROUTES • 8.12KB • 221KB SHARED</span>
+          <span className="mono-label">+--- [CAPE TOWN · EST. 2024] ---------------------------------------------------+</span>
+          <span className="mono-label hide-md">DEVELOPMENT & MARKETING ARCHITECTURE</span>
+          <span className="mono-label">LATENCY: &lt;100MS · EDGE STATIC ---+</span>
         </div>
       </div>
 
@@ -46,9 +49,10 @@ export default function LandingPage() {
           </Link>
 
           <div className="nav-links">
-            <a href="#tools" className="nav-link"><span className="nav-mono">01</span> Tools</a>
-            <a href="#proof" className="nav-link"><span className="nav-mono">02</span> Proof</a>
-            <Link href="/dashboard/billing" className="nav-link"><span className="nav-mono">03</span> Pricing</Link>
+            <a href="#work" className="nav-link"><span className="nav-mono">01</span> Work</a>
+            <a href="#calculator" className="nav-link"><span className="nav-mono">02</span> Estimator</a>
+            <a href="#tools" className="nav-link"><span className="nav-mono">03</span> Tools</a>
+            <Link href="/dashboard/billing" className="nav-link"><span className="nav-mono">04</span> Pricing</Link>
           </div>
 
           <div className="nav-cta">
@@ -64,52 +68,58 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* HERO — Hybrid Value Proposition: editorial 7/5 grid, dividing line, inset shadow */}
+      {/* HERO — Hybrid Value Proposition: "WE ENGINEER HIGH-CONVERSION WEBSITES. Then we drive the traffic that scales them." */}
       <header className="hero">
         <div className="hero-grid">
           {/* LEFT — headline block */}
           <div className="hero-copy">
             <div className="kicker">
               <span className="kicker-rule" aria-hidden="true" />
-              <span className="mono-label">DIGITAL ENTITY ARCHITECTURE — SOUTH AFRICA</span>
+              <span className="mono-label">THE HYBRID VALUE PROPOSITION · 2026</span>
             </div>
 
             <h1 className="hero-h1">
-              If an AI cannot <span className="hero-ink">verify you,</span>
+              WE ENGINEER <span className="hero-ink">HIGH-CONVERSION</span> WEBSITES.
               <br />
-              you don&apos;t exist.
+              <span className="hero-subline">Then we drive the traffic that scales them.</span>
             </h1>
 
             <div className="hero-utility">
               <div className="utility-col">
-                <span className="mono-label">DEVELOPMENT</span>
-                <p>Evidence ledger, deny-all sandbox, <br />durable Eve agents.</p>
+                <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-500">
+                  <Terminal className="h-3.5 w-3.5" />
+                  <span>Development</span>
+                </div>
+                <p>Evidence ledger, deny-all sandbox, Next.js SSG architectures.</p>
               </div>
               <div className="utility-divider" aria-hidden="true" />
               <div className="utility-col">
-                <span className="mono-label">MARKETING</span>
-                <p>50+ field audits, WhatsApp+IG <br />automation, verified trust.</p>
+                <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-500">
+                  <BarChart3 className="h-3.5 w-3.5" />
+                  <span>Marketing</span>
+                </div>
+                <p>50+ field audits, Meta WhatsApp + IG bots, verified trust signals.</p>
               </div>
             </div>
 
             <p className="hero-sub">
-              We make you verifiable. One platform that proves it — fast load, clean interactions, and a natural path to action.
+              If an AI cannot verify your entity exists, your traffic converts to zero. We make you verifiable, load in &lt;100ms, and turn signals into revenue.
             </p>
 
             <div className="hero-actions">
-              <Link href={user ? '/dashboard' : '/login?register=true'} className="btn btn-amber btn-lg">
-                Launch workspace <span className="btn-arrow">→</span>
-              </Link>
-              <Link href="/dashboard/crm" className="btn btn-ghost btn-lg">
-                Explore Happy Hunter CRM
+              <a href="#work" className="btn btn-amber btn-lg">
+                View Our Proof <ArrowDown className="h-4 w-4" />
+              </a>
+              <Link href={user ? '/dashboard' : '/login?register=true'} className="btn btn-ghost btn-lg">
+                Launch Free Workspace →
               </Link>
             </div>
 
             <div className="hero-meta proof-strip">
-              <span><b>8.12kB</b> First Load</span><i>—</i>
-              <span><b>221kB</b> Shared</span><i>—</i>
-              <span><b>12</b> Static Routes</span><i>—</i>
-              <span><b>2.91kB</b> Onboarding</span>
+              <span><b>100%</b> Core Web Vitals</span><i>—</i>
+              <span><b>&lt;100ms</b> TTFB</span><i>—</i>
+              <span><b>1,482</b> Ledger Facts</span><i>—</i>
+              <span><b>Zero</b> Bloat</span>
             </div>
           </div>
 
@@ -188,14 +198,42 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* TOOLS — specific interactive layouts, not generic grid */}
+      {/* SECTION: CONVERSION ESTIMATOR (ROI CALCULATOR) */}
+      <section id="calculator" className="section">
+        <div className="section-head editorial-head">
+          <div className="head-rule" aria-hidden="true" />
+          <div>
+            <span className="mono-label">01 — CONVERSION AUTHORITY</span>
+            <h2>Interactive Performance Estimator</h2>
+            <p>Showcase digital marketing authority on the canvas. Calculate projected revenue lift when moving to entity-first architecture.</p>
+          </div>
+        </div>
+
+        <RoiCalculator />
+      </section>
+
+      {/* SECTION: DEVELOPMENT PROOF (CASE STUDIES BUILT LIKE AUDITS) */}
+      <section id="work" className="section section-alt">
+        <div className="section-head editorial-head">
+          <div className="head-rule" aria-hidden="true" />
+          <div>
+            <span className="mono-label">02 — THE DEVELOPMENT PROOF</span>
+            <h2>Case Studies Built Like Engineering Audits</h2>
+            <p>No vague agency screenshots. Every portfolio project structured into 3 distinct pillars: Baseline Problem, Dev Execution, and Marketing Proof.</p>
+          </div>
+        </div>
+
+        <DiagnosticCaseStudies />
+      </section>
+
+      {/* SECTION: SPECIFIC INTERACTIVE SUITE */}
       <section id="tools" className="section">
         <div className="section-head editorial-head">
           <div className="head-rule" aria-hidden="true" />
           <div>
-            <span className="mono-label">01 — THE SUITE</span>
+            <span className="mono-label">03 — THE SUITE</span>
             <h2>One platform. Six hunters.</h2>
-            <p>Not icons. Specific execution — each block shows how it works, with 1px borders and real data.</p>
+            <p>Specific interactive execution blocks — live endpoints, background queues, and verified ledger facts.</p>
           </div>
           <span className="mono-label head-count">06 BLOCKS</span>
         </div>
@@ -210,7 +248,7 @@ export default function LandingPage() {
             <div className="cell-body">
               <span className="pill pill-amber">Agentic first — Eve</span>
               <h3>Happy Hunter CRM</h3>
-              <p>The CRM is where the agent keeps its notes. Durable Eve agents, evidence-first ledger, mailbox sync. No hallucinations.</p>
+              <p>The CRM is where the agent keeps its notes. Durable Eve agents, evidence-first ledger, mailbox sync. Zero hallucinations.</p>
               <div className="cell-tags"><span>Eve durable agents</span><span>Evidence ledger</span><span>Mailbox sync</span></div>
               <span className="cell-link">Open CRM Control Center →</span>
             </div>
@@ -277,12 +315,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* BREAKPOINTS — editorial geometry, proof of responsive execution */}
+      {/* SECTION: RESPONSIVE BREAKPOINTS GEOMETRY */}
       <section className="section section-alt">
         <div className="section-head editorial-head">
           <div className="head-rule" aria-hidden="true" />
           <div>
-            <span className="mono-label">02 — RESPONSIVE GEOMETRY</span>
+            <span className="mono-label">04 — RESPONSIVE GEOMETRY</span>
             <h2>Web Breakpoints — proof of execution.</h2>
             <p>Not a claim. A grid that adapts — 6 blocks, 1px borders, exact thresholds.</p>
           </div>
@@ -312,48 +350,7 @@ export default function LandingPage() {
         <div className="bp-note mono-label">Grid: 12 cols → 2 cols (@≤900px) → 1 col (@≤640px) • Inset shadows • Spring: cubic-bezier(0.175,0.885,0.32,1.275)</div>
       </section>
 
-      {/* PROCESS — horizontal steps, dividing lines */}
-      <section id="proof" className="section">
-        <div className="section-head editorial-head">
-          <div className="head-rule" aria-hidden="true" />
-          <div>
-            <span className="mono-label">03 — THE HUNT</span>
-            <h2>How the hunt works</h2>
-            <p>Observe, state, move. Three steps, no theatre.</p>
-          </div>
-        </div>
-
-        <div className="steps">
-          <div className="steps-line" aria-hidden="true" />
-          {[
-            { n: '01', t: 'Verifiable', d: 'Audit the listing. Fix NAP, hours, category, and trust signals. If an AI can verify you, a customer can.' },
-            { n: '02', t: 'Contactable', d: 'Every business on the map is a lead until contacted. Queue it. Let Eve research and commit facts, not guesses.' },
-            { n: '03', t: 'Revenue', d: 'Reach them where they reply — WhatsApp buttons, IG DMs, email — with evidence-backed context.' },
-          ].map(s => (
-            <div key={s.n} className="step">
-              <span className="step-n">{s.n}</span>
-              <h4>{s.t}</h4>
-              <p>{s.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ENTITY PROOF — dark strip, tactile */}
-      <section className="proof">
-        <div className="proof-inner">
-          <div className="proof-copy">
-            <h3>Your business exists. To Google, it might as well be a ghost — until we fix that.</h3>
-            <p>We read the digital world like tracks in the bush. Every signal points somewhere.</p>
-          </div>
-          <div className="proof-marks">
-            <span><strong>Black</strong> + amber. One accent, everywhere.</span>
-            <span><strong>Evidence</strong> over hallucination.</span>
-            <span><strong>Data</strong> stays yours.</span>
-          </div>
-        </div>
-      </section>
-
+      {/* FINAL CTA */}
       <section className="cta">
         <div className="cta-card">
           <p className="mono-label" style={{ justifyContent: 'center', display:'flex', alignItems:'center', gap:'8px' }}><span className="dot" />Ready when you are</p>
@@ -425,15 +422,16 @@ export default function LandingPage() {
 
         .hero { max-width:1280px; margin:0 auto; width:100%; padding:28px 24px 24px; position:relative; z-index:2; }
         .hero-grid { display:grid; grid-template-columns:7fr 5fr; gap:0; border:1px solid #1a1a1a; border-radius:20px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.4); background:#0a0a0a; }
-        .hero-copy { padding:32px; display:flex; flex-direction:column; gap:16px; border-right:1px solid #1a1a1a; }
+        .hero-copy { padding:36px; display:flex; flex-direction:column; gap:18px; border-right:1px solid #1a1a1a; }
         .kicker { display:flex; align-items:center; gap:12px; }
         .kicker-rule { width:28px; height:1px; background:#f59e0b; display:block; }
-        .hero-h1 { font-family:'Clash Display','Syne',sans-serif; font-size:clamp(32px,4.2vw,52px); font-weight:700; line-height:0.92; letter-spacing:-0.04em; color:#fff; margin:0; }
+        .hero-h1 { font-family:'Clash Display','Syne',sans-serif; font-size:clamp(32px,4.5vw,56px); font-weight:700; line-height:0.96; letter-spacing:-0.035em; color:#fff; margin:0; }
         .hero-ink { color:#f59e0b; }
+        .hero-subline { display:block; font-size:clamp(18px,2.2vw,28px); font-weight:600; color:#d4d4d8; margin-top:8px; line-height:1.15; letter-spacing:-0.02em; }
         .hero-utility { display:grid; grid-template-columns:1fr auto 1fr; gap:16px; padding:14px; border:1px solid #1a1a1a; border-radius:12px; background:#050505; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
         .utility-col p { font-size:12px; line-height:1.5; color:#a1a1aa; margin:6px 0 0; }
         .utility-divider { width:1px; background:#1a1a1a; }
-        .hero-sub { font-size:14px; line-height:1.6; color:#9ca3af; max-width:520px; margin:0; border-left:2px solid #f59e0b; padding-left:12px; }
+        .hero-sub { font-size:14px; line-height:1.6; color:#9ca3af; max-width:540px; margin:0; border-left:2px solid #f59e0b; padding-left:12px; }
         .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:4px; }
         .proof-strip { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:6px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#52525b; border-top:1px solid #1a1a1a; padding-top:12px; }
         .proof-strip b { color:#f59e0b; font-weight:800; }
@@ -481,10 +479,10 @@ export default function LandingPage() {
         .marquee-track i{ font-style:normal; opacity:0.5; }
         @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-        .section { max-width:1280px; margin:0 auto; width:100%; padding:48px 24px; position:relative; z-index:2; }
+        .section { max-width:1280px; margin:0 auto; width:100%; padding:56px 24px; position:relative; z-index:2; }
         .section-alt { background:#080808; border-top:1px solid #1a1a1a; border-bottom:1px solid #1a1a1a; max-width:none; }
-        .section-alt .section-head, .section-alt .breakpoints-grid, .section-alt .steps { max-width:1280px; margin-left:auto; margin-right:auto; padding-left:24px; padding-right:24px; }
-        .editorial-head { display:flex; gap:16px; align-items:flex-start; margin-bottom:24px; }
+        .section-alt .section-head, .section-alt .breakpoints-grid, .section-alt .steps, .section-alt > div { max-width:1280px; margin-left:auto; margin-right:auto; }
+        .editorial-head { display:flex; gap:16px; align-items:flex-start; margin-bottom:28px; }
         .head-rule { width:3px; align-self:stretch; background:#f59e0b; border-radius:1px; min-height:60px; }
         .editorial-head h2 { font-family:'Clash Display','Syne',sans-serif; font-size:28px; font-weight:700; letter-spacing:-0.03em; color:#fff; margin:4px 0 6px; line-height:1; }
         .editorial-head p { font-size:13px; line-height:1.6; color:#71717a; margin:0; max-width:640px; }
@@ -526,21 +524,6 @@ export default function LandingPage() {
         .bp-icon { width:56px; height:40px; border:2px solid #18181b; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:20px; background:#f4f4f5; }
         .bp-note { margin-top:12px; text-align:center; color:#52525b; }
 
-        .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#1a1a1a; border:1px solid #1a1a1a; border-radius:16px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
-        .step { background:#0a0a0a; padding:20px; display:flex; flex-direction:column; gap:10px; transition:all 0.35s cubic-bezier(0.175,0.885,0.32,1.275); }
-        .step:hover { background:#111; }
-        .step-n { width:36px; height:36px; border-radius:8px; background:#f59e0b; color:#000; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family:'JetBrains Mono', monospace; border:1px solid #000; }
-        .step h4 { font-family:'Clash Display',sans-serif; font-size:16px; font-weight:700; color:#fff; margin:0; letter-spacing:-0.02em; }
-        .step p { font-size:12.5px; line-height:1.6; color:#71717a; margin:0; }
-
-        .proof { background:#080808; border-top:1px solid #1a1a1a; border-bottom:1px solid #1a1a1a; position:relative; z-index:2; }
-        .proof-inner { max-width:1280px; margin:0 auto; padding:32px 24px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px; align-items:center; }
-        .proof-copy h3 { font-family:'Clash Display',sans-serif; font-size:20px; font-weight:700; letter-spacing:-0.02em; color:#fff; margin:0 0 8px; line-height:1.2; }
-        .proof-copy p { font-size:13px; line-height:1.6; color:#71717a; margin:0; }
-        .proof-marks { display:flex; flex-direction:column; gap:1px; background:#1a1a1a; border:1px solid #1a1a1a; border-radius:12px; overflow:hidden; }
-        .proof-marks span { font-size:12.5px; color:#e4e4e7; background:#0a0a0a; padding:10px 14px; font-family:'Inter',sans-serif; }
-        .proof-marks strong { color:#f59e0b; }
-
         .cta { max-width:1280px; margin:0 auto; width:100%; padding:48px 24px 0; position:relative; z-index:2; }
         .cta-card { background:#0a0a0a; border:1px solid #1a1a1a; border-radius:20px; padding:40px 28px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.4); }
         .cta-card h2 { font-family:'Clash Display',sans-serif; font-size:28px; font-weight:700; letter-spacing:-0.03em; color:#fff; margin:0; }
@@ -558,8 +541,8 @@ export default function LandingPage() {
         .footer-links a:hover { color:#f59e0b; }
         .footer-bottom { max-width:1280px; margin:0 auto; padding:14px 24px 24px; display:flex; justify-content:space-between; gap:16px; font-family:'JetBrains Mono', monospace; font-size:10px; color:#52525b; border-top:1px solid #1a1a1a; text-transform:uppercase; letter-spacing:0.06em; }
 
-        @media (prefers-reduced-motion: reduce) { .dot, .marquee-track, .nav-loading, .cell, .bp-card, .step { animation:none !important; transition:none !important; transform:none !important; } }
-        @media (max-width: 900px) { .hero-grid { grid-template-columns:1fr; } .hero-copy{border-right:none; border-bottom:1px solid #1a1a1a;} .bento{grid-template-columns:1fr;} .cell-featured{grid-column:auto;} .breakpoints-grid{grid-template-columns:1fr;} .steps{grid-template-columns:1fr;} .proof-inner{grid-template-columns:1fr;} .footer-inner{flex-direction:column;} .nav-links{display:none;} .hide-sm{display:none;} .utility-inner .hide-md{display:none;} }
+        @media (prefers-reduced-motion: reduce) { .dot, .marquee-track, .nav-loading, .cell, .bp-card { animation:none !important; transition:none !important; transform:none !important; } }
+        @media (max-width: 900px) { .hero-grid { grid-template-columns:1fr; } .hero-copy{border-right:none; border-bottom:1px solid #1a1a1a;} .bento{grid-template-columns:1fr;} .cell-featured{grid-column:auto;} .breakpoints-grid{grid-template-columns:1fr;} .footer-inner{flex-direction:column;} .nav-links{display:none;} .hide-sm{display:none;} .utility-inner .hide-md{display:none;} }
         @media (max-width: 480px) { .hero{padding:16px;} .hero-copy{padding:20px;} .hero-h1{font-size:28px;} .breakpoints-grid{grid-template-columns:1fr;} }
       `}</style>
     </div>
