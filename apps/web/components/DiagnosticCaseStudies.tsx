@@ -52,76 +52,70 @@ const CASE_STUDIES: AuditCaseStudy[] = [
 
 export default function DiagnosticCaseStudies(): React.JSX.Element {
   return (
-    <div className="space-y-6">
-      <div className="grid gap-6 lg:grid-cols-3">
+    <div className="space-y-8">
+      <div className="grid gap-8 lg:grid-cols-3">
         {CASE_STUDIES.map((study) => (
-          <SpotlightCard key={study.id} className="h-full flex flex-col justify-between">
+          <SpotlightCard key={study.id} className="h-full flex flex-col justify-between !p-8">
             <div>
-              {/* Header meta */}
-              <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-4 mb-5">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-amber-500">
+              <div className="flex items-start justify-between gap-3 border-b border-white/[0.06] pb-5 mb-6">
+                <span className="text-[10px] font-mono font-black uppercase tracking-[0.2em] text-amber-500">
                   {study.tag}
                 </span>
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-zinc-400">
+                <span className="text-[9px] font-mono px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-zinc-500">
                   DIAGNOSTIC
                 </span>
               </div>
 
-              <div className="mb-4">
-                <h4 className="text-lg font-bold text-white font-display">{study.client}</h4>
-                <p className="text-xs text-zinc-500 font-mono mt-0.5">{study.industry}</p>
+              <div className="mb-6">
+                <h4 className="text-[17px] font-bold text-white tracking-tight" style={{ fontFamily: 'Clash Display, Syne, sans-serif' }}>{study.client}</h4>
+                <p className="text-[11px] text-zinc-500 font-mono mt-1 tracking-wide uppercase">{study.industry}</p>
               </div>
 
-              {/* Three Distinct Diagnostic Pillars */}
-              <div className="space-y-4">
-                {/* Pillar 1: Baseline */}
-                <div className="rounded-xl border border-red-500/15 bg-red-950/10 p-3.5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-red-400 mb-1">
-                    <AlertCircle className="h-3.5 w-3.5" />
-                    <span>1. The Baseline Problem</span>
+              <div className="space-y-5">
+                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-zinc-500 mb-2">
+                    <AlertCircle className="h-3.5 w-3.5 text-zinc-500" />
+                    <span>01 · Baseline Problem</span>
                   </div>
-                  <p className="text-xs leading-relaxed text-zinc-300">
+                  <p className="text-[12.5px] leading-[1.65] text-zinc-300">
                     {study.baseline}
                   </p>
                 </div>
 
-                {/* Pillar 2: Execution */}
-                <div className="rounded-xl border border-white/5 bg-zinc-900/60 p-3.5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-1">
-                    <Code2 className="h-3.5 w-3.5 text-amber-400" />
-                    <span>2. The Dev Execution</span>
+                <div className="rounded-2xl border border-amber-500/10 bg-amber-500/[0.04] p-4">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-amber-500/80 mb-2">
+                    <Code2 className="h-3.5 w-3.5" />
+                    <span>02 · Dev Execution</span>
                   </div>
-                  <p className="text-xs leading-relaxed text-zinc-300 font-mono">
+                  <p className="text-[12.5px] leading-[1.65] text-zinc-300">
                     {study.execution}
                   </p>
                 </div>
 
-                {/* Pillar 3: Marketing Proof */}
-                <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/15 p-3.5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 mb-1">
+                <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.06] p-4">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-emerald-400 mb-2">
                     <LineChart className="h-3.5 w-3.5" />
-                    <span>3. The Marketing Proof</span>
+                    <span>03 · Marketing Proof</span>
                   </div>
-                  <p className="text-xs leading-relaxed text-zinc-200">
+                  <p className="text-[12.5px] leading-[1.65] text-zinc-200">
                     {study.proof}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Outcome Metric */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
+                <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-zinc-500">
                   {study.metricLabel}
                 </span>
-                <div className="text-2xl font-black font-mono text-amber-400">
-                  {study.metricValue}
+                <div className="text-[26px] font-black tracking-tight text-white mt-0.5" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+                  <span className="text-amber-500">{study.metricValue}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-400">
-                <CheckCircle2 className="h-4 w-4" />
-                <span>Verified in Prod</span>
+              <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold text-zinc-400">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                <span>Verified</span>
               </div>
             </div>
           </SpotlightCard>
