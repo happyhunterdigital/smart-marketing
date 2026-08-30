@@ -1,6 +1,4 @@
 import React from "react";
-import SpotlightCard from "./SpotlightCard";
-import { AlertCircle, Code2, LineChart, CheckCircle2 } from "lucide-react";
 
 interface AuditCaseStudy {
   id: string;
@@ -52,75 +50,144 @@ const CASE_STUDIES: AuditCaseStudy[] = [
 
 export default function DiagnosticCaseStudies(): React.JSX.Element {
   return (
-    <div className="space-y-8">
-      <div className="grid gap-8 lg:grid-cols-3">
-        {CASE_STUDIES.map((study) => (
-          <SpotlightCard key={study.id} className="h-full flex flex-col justify-between !p-8">
-            <div>
-              <div className="flex items-start justify-between gap-3 border-b border-white/[0.06] pb-5 mb-6">
-                <span className="text-[10px] font-mono font-black uppercase tracking-[0.2em] text-amber-500">
-                  {study.tag}
-                </span>
-                <span className="text-[9px] font-mono px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-zinc-500">
-                  DIAGNOSTIC
-                </span>
-              </div>
+    <div className="case-studies">
+      {CASE_STUDIES.map((study) => (
+        <article key={study.id} className="case-card">
+          <div className="case-top">
+            <span className="case-tag">{study.tag}</span>
+            <span className="case-metric">
+              <span className="case-metric-value">{study.metricValue}</span>
+              <span className="case-metric-label">{study.metricLabel}</span>
+            </span>
+          </div>
 
-              <div className="mb-6">
-                <h4 className="text-[17px] font-bold text-white tracking-tight" style={{ fontFamily: 'Clash Display, Syne, sans-serif' }}>{study.client}</h4>
-                <p className="text-[11px] text-zinc-500 font-mono mt-1 tracking-wide uppercase">{study.industry}</p>
-              </div>
+          <div className="case-header">
+            <h3 className="case-client">{study.client}</h3>
+            <span className="case-industry">{study.industry}</span>
+          </div>
 
-              <div className="space-y-4">
-                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
-                    <AlertCircle className="h-3 w-3" />
-                    <span>Baseline Problem</span>
-                  </div>
-                  <p className="text-[12.5px] leading-[1.7] text-zinc-400">
-                    {study.baseline}
-                  </p>
-                </div>
-
-                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
-                    <Code2 className="h-3 w-3" />
-                    <span>Dev Execution</span>
-                  </div>
-                  <p className="text-[12.5px] leading-[1.7] text-zinc-300">
-                    {study.execution}
-                  </p>
-                </div>
-
-                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
-                    <LineChart className="h-3 w-3" />
-                    <span>Marketing Proof</span>
-                  </div>
-                  <p className="text-[12.5px] leading-[1.7] text-zinc-200">
-                    {study.proof}
-                  </p>
-                </div>
-              </div>
+          <div className="case-sections">
+            <div className="case-section">
+              <span className="case-section-label">Baseline problem</span>
+              <p>{study.baseline}</p>
             </div>
-
-            <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-zinc-500">
-                  {study.metricLabel}
-                </span>
-                <div className="text-[26px] font-black tracking-tight text-white mt-0.5" style={{ fontFamily: 'Clash Display, sans-serif' }}>
-                  <span className="text-amber-500">{study.metricValue}</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold text-zinc-400">
-                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
-                <span>Verified</span>
-              </div>
+            <div className="case-section">
+              <span className="case-section-label">Execution</span>
+              <p>{study.execution}</p>
             </div>
-          </SpotlightCard>
-        ))}
-      </div>
+            <div className="case-section">
+              <span className="case-section-label">Proof</span>
+              <p>{study.proof}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <style jsx>{`
+        .case-studies {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .case-card {
+          background: rgba(255,255,255,0.02);
+          border-radius: 20px;
+          padding: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 28px;
+          transition: background 0.3s ease;
+        }
+        .case-card:hover {
+          background: rgba(255,255,255,0.035);
+        }
+        .case-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .case-tag {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #52525b;
+        }
+        .case-metric {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 2px;
+        }
+        .case-metric-value {
+          font-family: var(--font-display);
+          font-size: 32px;
+          font-weight: 700;
+          color: #f59e0b;
+          letter-spacing: -0.03em;
+          line-height: 1;
+        }
+        .case-metric-label {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #3f3f46;
+        }
+        .case-header {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .case-client {
+          font-family: var(--font-display);
+          font-size: 22px;
+          font-weight: 700;
+          color: #fff;
+          margin: 0;
+          letter-spacing: -0.02em;
+        }
+        .case-industry {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: #3f3f46;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+        .case-sections {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .case-section {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .case-section-label {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #3f3f46;
+        }
+        .case-section p {
+          font-size: 14px;
+          line-height: 1.7;
+          color: #a1a1aa;
+          margin: 0;
+        }
+
+        @media (max-width: 834px) {
+          .case-card { padding: 28px; }
+          .case-top { flex-direction: column; gap: 12px; }
+          .case-metric { align-items: flex-start; }
+        }
+      `}</style>
     </div>
   );
 }
