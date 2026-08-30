@@ -71,33 +71,33 @@ export default function DiagnosticCaseStudies(): React.JSX.Element {
                 <p className="text-[11px] text-zinc-500 font-mono mt-1 tracking-wide uppercase">{study.industry}</p>
               </div>
 
-              <div className="space-y-5">
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-zinc-500 mb-2">
-                    <AlertCircle className="h-3.5 w-3.5 text-zinc-500" />
-                    <span>01 · Baseline Problem</span>
+              <div className="space-y-4">
+                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
+                    <AlertCircle className="h-3 w-3" />
+                    <span>Baseline Problem</span>
                   </div>
-                  <p className="text-[12.5px] leading-[1.65] text-zinc-300">
+                  <p className="text-[12.5px] leading-[1.7] text-zinc-400">
                     {study.baseline}
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-amber-500/10 bg-amber-500/[0.04] p-4">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-amber-500/80 mb-2">
-                    <Code2 className="h-3.5 w-3.5" />
-                    <span>02 · Dev Execution</span>
+                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
+                    <Code2 className="h-3 w-3" />
+                    <span>Dev Execution</span>
                   </div>
-                  <p className="text-[12.5px] leading-[1.65] text-zinc-300">
+                  <p className="text-[12.5px] leading-[1.7] text-zinc-300">
                     {study.execution}
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.06] p-4">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-emerald-400 mb-2">
-                    <LineChart className="h-3.5 w-3.5" />
-                    <span>03 · Marketing Proof</span>
+                <div className="rounded-xl border border-white/[0.06] bg-transparent p-5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-zinc-500 mb-2.5">
+                    <LineChart className="h-3 w-3" />
+                    <span>Marketing Proof</span>
                   </div>
-                  <p className="text-[12.5px] leading-[1.65] text-zinc-200">
+                  <p className="text-[12.5px] leading-[1.7] text-zinc-200">
                     {study.proof}
                   </p>
                 </div>

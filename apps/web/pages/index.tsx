@@ -453,10 +453,9 @@ export default function LandingPage() {
         .editorial-head p { font-size:14px; line-height:1.7; color:#71717a; margin:0; max-width:640px; }
         .head-count { margin-left:auto; border:1px solid rgba(255,255,255,0.06); padding:8px 14px; border-radius:999px; background:#0a0a0a; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); font-size:10px; }
 
-        /* — Minimalist bento: air, not 1px crowd — */
-        .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; background:transparent; border:none; overflow:visible; }
-        .cell { background:#0a0a0a; padding:24px; display:flex; flex-direction:column; gap:14px; position:relative; transition:all 0.35s cubic-bezier(0.175,0.885,0.32,1.275); text-decoration:none; cursor:pointer; border:1px solid rgba(255,255,255,0.06); border-radius:20px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
-        .cell:hover { background:#111; transform:translateY(-3px); border-color:rgba(251,191,36,0.15); box-shadow:0 12px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04); }
+        /* — High-end minimalist bento: air, 1px hairlines, generous negative space — */
+        .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; background:transparent; border:none; overflow:visible; }
+        .cell { background:#0a0a0a; padding:28px; display:flex; flex-direction:column; gap:16px; position:relative; transition:all 0.5s cubic-bezier(0.32,0.72,0,1); text-decoration:none; cursor:pointer; border:1px solid rgba(255,255,255,0.06); border-radius:24px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
         .cell-featured { grid-column:span 2; padding:0; gap:0; border-radius:20px; overflow:hidden; }
         .cell-featured .cell-img { height:240px; position:relative; overflow:hidden; border-bottom:1px solid rgba(255,255,255,0.06); }
         .cell-img img { width:100%; height:100%; object-fit:cover; }
